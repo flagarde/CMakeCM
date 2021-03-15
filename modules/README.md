@@ -108,7 +108,7 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
 </table>
 
 ## [Testings.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Testings.cmake) : ##
-Some `CMake` functions to perform some tests in `CMake` files.
+Some `CMake` functions to perform some tests in `CMake files`.
 
 <table>
  <tr>
