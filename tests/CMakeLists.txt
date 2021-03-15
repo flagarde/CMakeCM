@@ -29,5 +29,5 @@ foreach(test ${to_buid})
   add_test(NAME ${test}Install COMMAND ${CMAKE_COMMAND} --install "${CMAKE_CURRENT_BINARY_DIR}/units/to_build/${test}" --config Debug)
 endforeach()
 
-add_custom_target(TestsVerbose COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure -C Debug --progress --verbose)
+add_custom_target(TestsVerbose COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure -C Debug --progress --extra-verbose)
 add_custom_target(Tests COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure -C Debug --progress)
