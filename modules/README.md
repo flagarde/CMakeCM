@@ -113,6 +113,7 @@ Some `CMake` functions to perform some tests in `CMake` files.
 <table>
  <tr>
   <td>
+    
 ```cmake
   include(Testings)
   ASSERT_NOT_EQUAL("2" "2")
