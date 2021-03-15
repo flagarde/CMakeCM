@@ -1,4 +1,4 @@
-# Module Descriptions :
+# Module Descriptions
 
 # Local
 
