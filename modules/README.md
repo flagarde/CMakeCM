@@ -5,6 +5,9 @@
 ## [Colors.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Colors.cmake) : ##
 Defines some colors and text styles.
 
+## [DefaultInstallPrefix.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/DefaultInstallPrefix.cmake) : ##
+Set `CMAKE_INSTALL_PREFIX` if it has not been defined before. 
+
 ### Example :
       
 <table>
@@ -59,7 +62,6 @@ message(STATUS "${BackBlue}Fr${BackWhite}${Black}an${BackRed}${White}ce${Reset}"
  </tr>
 </table>
   
-      
 ## [Messages.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Messages.cmake) : ##
 Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN` and `ERROR` are created by defaults.
 
@@ -138,5 +140,3 @@ Some `CMake` functions to perform some tests in `CMake files`.
 </table>
 
 # Remote
-
-
