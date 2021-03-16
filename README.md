@@ -49,6 +49,7 @@ The `REMOTE` is a `URL` to the file to download for the module. In order for you
 * ## Local :
   * [Color](modules/Colors.cmake) : Defines some colors and text styles.
   * [Messages](modules/Messages.cmake) : Redefines the `message` command to use personnalized styles.
+  * [PreventInSourceBuilds](modules/PreventInSourceBuilds.cmake) : Prevents building the project from his source directory.
   * [Testings](modules/Testings.cmake) : Some `CMake` functions to perform some tests in `CMake files`.
 
 * ## Remote :

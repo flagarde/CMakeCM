@@ -104,6 +104,9 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
  </tr>
 </table>
 
+## [PreventInSourceBuilds.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/PreventInSourceBuilds.cmake) : ##
+Prevents building the project from his source directory.
+
 ## [Testings.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Testings.cmake) : ##
 Some `CMake` functions to perform some tests in `CMake files`.
 
