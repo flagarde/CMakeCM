@@ -91,11 +91,8 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
   message(WARN "WARN")
   message(INFO "INFO")
   message(NOTE "NOTE")
-  message(TODO "TODO")
   message(TOADD "TO ADD")
   message(TOREMOVE "TO REMOVE")
-  message(SUCCESS "SUCCESS")
-  message(FAILURE "FAILURE")
   message(VERY_IMPORTANT "VERY_IMPORTANT")
 ```
 </td>
