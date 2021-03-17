@@ -106,6 +106,17 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
  </tr>
 </table>
 
+## [Ping.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Ping.cmake) : ##
+Test if you are online. Try to download [Ping](https://github.com/flagarde/Ping) an populate the `IS_ONLINE` and `IS_OFFLINE` variables and `IS_ONLINE_RAW` and `IS_OFFLINE_RAW`.
+
+```cmake
+include(Ping)
+
+if(${IS_ONLINE} STREQUAL TRUE)
+  message(STATUS "I'm online.")
+endif()
+```
+
 ## [PreventInSourceBuilds.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/PreventInSourceBuilds.cmake) : ##
 Prevents building the project from his source directory.
 
