@@ -109,6 +109,14 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
 ## [PreventInSourceBuilds.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/PreventInSourceBuilds.cmake) : ##
 Prevents building the project from his source directory.
 
+## [Standards.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Standards.cmake) : ##
+Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
+
+```cmake
+  include(Standard)
+  cxx_20()
+```
+
 ## [Testings.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Testings.cmake) : ##
 Some `CMake` functions to perform some tests in `CMake files`.
 
