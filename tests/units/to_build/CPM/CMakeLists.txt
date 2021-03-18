@@ -29,5 +29,4 @@ CPMAddPackage(
 # ---- Create binary ----
 add_executable(TestCPM main.cpp)
 target_link_libraries(TestCPM fibonacci)
-set_target_properties(TestCPM PROPERTIES CXX_STANDARD 17 COMPILE_FLAGS "-Wall -pedantic -Wextra -Werror")
 add_test(TestCPM COMMAND TestCPM)
