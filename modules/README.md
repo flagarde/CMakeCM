@@ -45,6 +45,20 @@ CPMAddPackage(
  </tr>
 </table>
 
+## [Doctest.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Doctest.cmake) : ##
+Use CPM to setup [doctest](https://github.com/onqtam/doctest)
+
+### Example :
+
+```cmake
+include(Doctest)
+
+# ---- Create binary ----
+add_executable(Test Test.cpp)
+target_link_libraries(Test PRIVATE doctest::doctest)
+doctest_discover_tests(Test)
+```
+
 ## [DefaultInstallPrefix.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/DefaultInstallPrefix.cmake) : ##
 Set `CMAKE_INSTALL_PREFIX` if it has not been defined before. 
 
