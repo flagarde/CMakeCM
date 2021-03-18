@@ -53,7 +53,7 @@ message(STATUS "${BackBlue}Fr${BackWhite}${Black}an${BackRed}${White}ce${Reset}"
   </td>
   <td> 
    <p align="center">
-    <img src="https://github.com/flagarde/CMakeCM/blob/master/docs/pictures/Colors.png" alt="Colors" />
+    <img src="https://raw.githubusercontent.com/flagarde/CMakeCM/main/docs/pictures/Colors.png" alt="Colors" />
    </p> 
   </td>
  </tr>
@@ -94,7 +94,7 @@ CPMAddPackage(
   </td>
   <td> 
    <p align="center">
-    <img src="https://github.com/flagarde/CMakeCM/blob/master/docs/pictures/CPM.png" alt="CPM" />
+    <img src="https://raw.githubusercontent.com/flagarde/CMakeCM/main/docs/pictures/CPM.png" alt="CPM" />
    </p> 
   </td>
  </tr>
@@ -163,7 +163,7 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
 </td>
   <td> 
    <p align="center">
-    <img src="https://github.com/flagarde/CMakeCM/blob/master/docs/pictures/Messages.png" alt="Messages" />
+    <img src="https://raw.githubusercontent.com/flagarde/CMakeCM/main/docs/pictures/Messages.png" alt="Messages" />
   </p>
   </td>
  </tr>
@@ -221,7 +221,7 @@ Some `CMake` functions to perform some tests in `CMake files`.
 </td>
   <td> 
    <p align="center">
-    <img src="https://github.com/flagarde/CMakeCM/blob/master/docs/pictures/Testings.png" alt="Testings" />
+    <img src="https://raw.githubusercontent.com/flagarde/CMakeCM/main/docs/pictures/Testings.png" alt="Testings" />
   </p>
   </td>
  </tr>
