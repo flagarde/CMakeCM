@@ -2,6 +2,7 @@ include_guard(GLOBAL)
 
 if(NOT WIN32)
   string(ASCII 27 Esc)
+  set(Return "${Esc}[3D")
   set(Reset "${Esc}[0m")
   set(Bold "${Esc}[1m")
   set(Faint "${Esc}[2m")
