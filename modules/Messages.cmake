@@ -109,7 +109,7 @@ function(restore_to_default MODE)
     list(JOIN MESSAGE_MODES ", " STRING_DEFAULT_MESSAGE_MODES)
     message(WARNING "Mode ${MODE} is not a CMake Mode : ${STRING_DEFAULT_MESSAGE_MODES}")
   else()
-    if(MESSAGE_MODES STREQUAL "STATUS" OR MESSAGE_MODES STREQUAL "VERBOSE" OR MESSAGE_MODES STREQUAL "DEBUG" OR MESSAGE_MODES STREQUAL "TRACE")
+    if(MODE STREQUAL "STATUS" OR MODE STREQUAL "VERBOSE" OR MODE STREQUAL "DEBUG" OR MODE STREQUAL "TRACE")
       message_mode(NAME ${MODE} APPEND_BEGIN "-- ")
     else()
       message_mode(NAME ${MODE})
@@ -150,7 +150,8 @@ function(message)
       string(REPLACE "\${Default}" "${${STYLE}}" STRING_ARGV ${STRING_ARGV})
     endif()
     _message(
-      ${PARENT_MODE}${Return}
+      ${PARENT_MODE}
+      ${Return}
       ${${APPEND_STYLE_BEGIN}}
       ${APPEND_BEGIN}
       ${Reset}
