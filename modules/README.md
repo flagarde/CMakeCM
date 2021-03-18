@@ -68,6 +68,7 @@ The wrapper defines some new commands :
 * `print_options(REPOSITORY "X")` to print all options of the repository X.
 * `undeclare_all_options(REPOSITORY "X")` to reset all function of the repository X.
 * `undeclare_option(REPOSITORY "X" OPTION "Y")` to reset an option of the repository X.
+
 ### Example :
       
 <table>
@@ -171,6 +172,8 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
 ## [Ping.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Ping.cmake) : ##
 Test if you are online. Try to download [Ping](https://github.com/flagarde/Ping) an populate the `IS_ONLINE` and `IS_OFFLINE` variables and `IS_ONLINE_RAW` and `IS_OFFLINE_RAW`.
 
+### Example :
+
 ```cmake
 include(Ping)
 
@@ -185,6 +188,8 @@ Prevents building the project from his source directory.
 ## [Standards.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Standards.cmake) : ##
 Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
 
+### Example :
+
 ```cmake
   include(Standard)
   cxx_20()
@@ -192,6 +197,8 @@ Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
 
 ## [Testings.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Testings.cmake) : ##
 Some `CMake` functions to perform some tests in `CMake files`.
+
+### Example :
 
 <table>
  <tr>
