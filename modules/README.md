@@ -5,6 +5,46 @@
 ## [Colors.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Colors.cmake) : ##
 Defines some colors and text styles.
 
+## [CPM.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/CPM.cmake) : ##
+Wrapper for `CPM` the setup-free CMake dependency management. Use the `cpm` function with `VERSION` argument to download `CPM`. If `VERSION` is not set the version will be the one in `https://github.com/flagarde/CMakeCM/blob/master/modules/CPM.cmake`.
+
+The wrapper defines some new commands :
+* `declare_option(REPOSITORY "X" OPTION "Y" VALUE "Z")` to declare option of the repository X.
+* `get_option(REPOSITORY "X" OPTION "Y" VARIABLE "Z")` store option Y of the repository X to variable Z.
+* `print_options(REPOSITORY "X")` to print all options of the repository X.
+* `undeclare_all_options(REPOSITORY "X")` to reset all function of the repository X.
+* `undeclare_option(REPOSITORY "X" OPTION "Y")` to reset an option of the repository X.
+### Example :
+      
+<table>
+ <tr>
+  <td>
+      
+```cmake
+include(CPM)
+cpm(VERSION 0.31.1)
+
+declare_option(REPOSITORY fibonacci OPTION CMAKE_CXX_STANDARD VALUE 11)
+declare_option(REPOSITORY fibonacci OPTION CMAKE_CXX_STANDARD_REQUIRED VALUE TRUE)
+declare_option(REPOSITORY fibonacci OPTION CMAKE_CXX_EXTENSIONS VALUE FALSE)
+print_options(REPOSITORY  fibonacci)
+
+CPMAddPackage(
+  NAME fibonacci
+  GIT_REPOSITORY https://github.com/cpm-cmake/testpack-fibonacci.git
+  VERSION "2.0"
+  OPTIONS "${fibonacci_OPTIONS}"
+)
+```
+  </td>
+  <td> 
+   <p align="center">
+    <img src="https://github.com/flagarde/CMakeCM/blob/master/docs/pictures/CPM.png" alt="CPM" />
+   </p> 
+  </td>
+ </tr>
+</table>
+
 ## [DefaultInstallPrefix.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/DefaultInstallPrefix.cmake) : ##
 Set `CMAKE_INSTALL_PREFIX` if it has not been defined before. 
 
