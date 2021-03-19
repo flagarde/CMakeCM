@@ -7,8 +7,8 @@ if(NOT DEFINED CLI11_REPOSITORY)
   set(CLI11_REPOSITORY "https://gitlab.com/ExternalRepositories/CLI11")
 endif()
 
-if(NOT DEFINED CLI11_VERSION)
-  set(CLI11_VERSION "1.9.1")
+if(NOT DEFINED CLI11_TAG)
+  set(CLI11_TAG "master")
 endif()
 
 declare_option(REPOSITORY CLI11 OPTION CLI11_WARNINGS_AS_ERRORS VALUE OFF)
@@ -27,7 +27,7 @@ print_options(REPOSITORY  CLI11)
 
 CPMFindPackage(NAME CLI11
                GIT_REPOSITORY ${CLI11_REPOSITORY}
-               VERSION ${CLI11_VERSION}
+               GIT_TAG ${CLI11_TAG}
                FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
                GIT_SUBMODULES ""
                OPTIONS "${CLI11_OPTIONS}")
