@@ -20,17 +20,17 @@ macro(cpm)
   include(Ping)
   include(Messages)
 
-  cmake_parse_arguments(CPM "" "VERSION" "" "${ARGN}")
-
-  if(DEFINED CPM_FORCE_VERSION OR NOT DEFINED CPM_VERSION)
-    set(CPM_VERSION "${CPM_DEFAULT_VERSION}")
+  cmake_parse_arguments(ARG "" "VERSION" "" "${ARGN}")
+  if(NOT DEFINED ARG_VERSION)
+    set(CPM_VER "${CPM_DEFAULT_VERSION}")
+  else()
+    set(CPM_VER "${ARG_VERSION}")
   endif()
 
-  set(CPM_DOWNLOAD_LOCATION "${CMAKE_BINARY_DIR}/Modules/CPM_${CPM_VERSION}.cmake")
-
+  set(CPM_DOWNLOAD_LOCATION "${CMAKE_BINARY_DIR}/Modules/CPM_${CPM_VER}.cmake")
   if(NOT EXISTS "${CPM_DOWNLOAD_LOCATION}")
     message(NOTE "Downloading CPM to ${CPM_DOWNLOAD_LOCATION}")
-    file(DOWNLOAD "https://gitlab.com/ExternalRepositories/CPM.cmake/-/raw/v${CPM_VERSION}/cmake/CPM.cmake" "${CPM_DOWNLOAD_LOCATION}")
+    file(DOWNLOAD "https://gitlab.com/ExternalRepositories/CPM.cmake/-/raw/v${CPM_VER}/cmake/CPM.cmake" "${CPM_DOWNLOAD_LOCATION}")
   endif()
 
   #Make CPm looks a bit like CMMM

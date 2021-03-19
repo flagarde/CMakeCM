@@ -50,8 +50,9 @@ The `REMOTE` is a `URL` to the file to download for the module. In order for you
   * [Color](modules/Colors.cmake) : Defines some colors and text styles.
   * [CPM](modules/CPM.cmake) : Wrapper for `CPM` the setup-free CMake dependency management.
   * [DefaultInstallPrefix](modules/DefaultInstallPrefix.cmake) : Set `CMAKE_INSTALL_PREFIX` if it has not been defined before.
+  * [Doctest](modules/Doctest.cmake) : Use `CPM` to setup `doctest`.
   * [Messages](modules/Messages.cmake) : Redefines the `message` command to use personnalized styles.
-  * [Ping](modules/Ping.cmake) : Prevents building the project from his source directory.
+  * [Ping](modules/Ping.cmake) : A basic ping for CMake. Test if you are online.
   * [PreventInSourceBuilds](modules/PreventInSourceBuilds.cmake) : Prevents building the project from his source directory.
   * [Standards](modules/Standards.cmake) : Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
   * [Testings](modules/Testings.cmake) : Some `CMake` functions to perform some tests in `CMake files`.

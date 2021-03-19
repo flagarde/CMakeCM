@@ -1,6 +1,7 @@
 cmcm_module(Colors.cmake LOCAL modules/Colors.cmake VERSION 1)
 cmcm_module(CPM.cmake LOCAL modules/CPM.cmake VERSION 1)
 cmcm_module(DefaultInstallPrefix.cmake LOCAL modules/DefaultInstallPrefix.cmake VERSION 1)
+cmcm_module(Doctest.cmake LOCAL modules/Doctest.cmake VERSION 1)
 cmcm_module(FlakedThuna.cmake LOCAL modules/FlakedThuna.cmake VERSION 1)
 cmcm_module(Messages.cmake LOCAL modules/Messages.cmake VERSION 1)
 cmcm_module(Ping.cmake LOCAL modules/Ping.cmake VERSION 1)

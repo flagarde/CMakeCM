@@ -5,49 +5,6 @@
 ## [Colors.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Colors.cmake) : ##
 Defines some colors and text styles.
 
-## [CPM.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/CPM.cmake) : ##
-Wrapper for `CPM` the setup-free CMake dependency management. Use the `cpm` function with `VERSION` argument to download `CPM`. If `VERSION` is not set the version will be the one in `https://github.com/flagarde/CMakeCM/blob/master/modules/CPM.cmake`.
-
-The wrapper defines some new commands :
-* `declare_option(REPOSITORY "X" OPTION "Y" VALUE "Z")` to declare option of the repository X.
-* `get_option(REPOSITORY "X" OPTION "Y" VARIABLE "Z")` store option Y of the repository X to variable Z.
-* `print_options(REPOSITORY "X")` to print all options of the repository X.
-* `undeclare_all_options(REPOSITORY "X")` to reset all function of the repository X.
-* `undeclare_option(REPOSITORY "X" OPTION "Y")` to reset an option of the repository X.
-### Example :
-      
-<table>
- <tr>
-  <td>
-      
-```cmake
-include(CPM)
-cpm(VERSION 0.31.1)
-
-declare_option(REPOSITORY fibonacci OPTION CMAKE_CXX_STANDARD VALUE 11)
-declare_option(REPOSITORY fibonacci OPTION CMAKE_CXX_STANDARD_REQUIRED VALUE TRUE)
-declare_option(REPOSITORY fibonacci OPTION CMAKE_CXX_EXTENSIONS VALUE FALSE)
-print_options(REPOSITORY  fibonacci)
-
-CPMAddPackage(
-  NAME fibonacci
-  GIT_REPOSITORY https://github.com/cpm-cmake/testpack-fibonacci.git
-  VERSION "2.0"
-  OPTIONS "${fibonacci_OPTIONS}"
-)
-```
-  </td>
-  <td> 
-   <p align="center">
-    <img src="https://github.com/flagarde/CMakeCM/blob/master/docs/pictures/CPM.png" alt="CPM" />
-   </p> 
-  </td>
- </tr>
-</table>
-
-## [DefaultInstallPrefix.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/DefaultInstallPrefix.cmake) : ##
-Set `CMAKE_INSTALL_PREFIX` if it has not been defined before. 
-
 ### Example :
       
 <table>
@@ -96,11 +53,77 @@ message(STATUS "${BackBlue}Fr${BackWhite}${Black}an${BackRed}${White}ce${Reset}"
   </td>
   <td> 
    <p align="center">
-    <img src="https://github.com/flagarde/CMakeCM/blob/master/docs/pictures/Colors.png" alt="Colors" />
+    <img src="https://raw.githubusercontent.com/flagarde/CMakeCM/main/docs/pictures/Colors.png" alt="Colors" />
    </p> 
   </td>
  </tr>
 </table>
+
+## [CPM.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/CPM.cmake) : ##
+Wrapper for `CPM` the setup-free CMake dependency management. Use the `cpm` function with `VERSION` argument to download `CPM`. If `VERSION` is not set the version will be the one in `https://github.com/flagarde/CMakeCM/blob/master/modules/CPM.cmake`.
+
+The wrapper defines some new commands :
+* `declare_option(REPOSITORY "X" OPTION "Y" VALUE "Z")` to declare option of the repository X.
+* `get_option(REPOSITORY "X" OPTION "Y" VARIABLE "Z")` store option Y of the repository X to variable Z.
+* `print_options(REPOSITORY "X")` to print all options of the repository X.
+* `undeclare_all_options(REPOSITORY "X")` to reset all function of the repository X.
+* `undeclare_option(REPOSITORY "X" OPTION "Y")` to reset an option of the repository X.
+
+### Example :
+      
+<table>
+ <tr>
+  <td>
+      
+```cmake
+include(CPM)
+cpm(VERSION 0.31.1)
+
+declare_option(REPOSITORY fibonacci OPTION CMAKE_CXX_STANDARD VALUE 11)
+declare_option(REPOSITORY fibonacci OPTION CMAKE_CXX_STANDARD_REQUIRED VALUE TRUE)
+declare_option(REPOSITORY fibonacci OPTION CMAKE_CXX_EXTENSIONS VALUE FALSE)
+print_options(REPOSITORY  fibonacci)
+
+CPMAddPackage(
+  NAME fibonacci
+  GIT_REPOSITORY https://github.com/cpm-cmake/testpack-fibonacci.git
+  VERSION "2.0"
+  OPTIONS "${fibonacci_OPTIONS}"
+)
+```
+  </td>
+  <td> 
+   <p align="center">
+    <img src="https://raw.githubusercontent.com/flagarde/CMakeCM/main/docs/pictures/CPM.png" alt="CPM" />
+   </p> 
+  </td>
+ </tr>
+</table>
+
+## [Doctest.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Doctest.cmake) : ##
+Use CPM to setup [doctest](https://github.com/onqtam/doctest)
+
+### Example :
+
+```cmake
+include(Doctest)
+
+# ---- Create binary ----
+add_executable(Test Test.cpp)
+target_link_libraries(Test PRIVATE doctest::doctest)
+doctest_discover_tests(Test)
+```
+
+## [DefaultInstallPrefix.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/DefaultInstallPrefix.cmake) : ##
+Set `CMAKE_INSTALL_PREFIX` if it has not been defined before. 
+
+### Example :
+
+```cmake
+include(DefaultInstallPrefix)
+
+default_install_prefix("${CMAKE_CURRENT_SOURCE_DIR}/install")
+```
   
 ## [Messages.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Messages.cmake) : ##
 Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN` and `ERROR` are created by defaults.
@@ -140,7 +163,7 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
 </td>
   <td> 
    <p align="center">
-    <img src="https://github.com/flagarde/CMakeCM/blob/master/docs/pictures/Messages.png" alt="Messages" />
+    <img src="https://raw.githubusercontent.com/flagarde/CMakeCM/main/docs/pictures/Messages.png" alt="Messages" />
   </p>
   </td>
  </tr>
@@ -148,6 +171,8 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
 
 ## [Ping.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Ping.cmake) : ##
 Test if you are online. Try to download [Ping](https://github.com/flagarde/Ping) an populate the `IS_ONLINE` and `IS_OFFLINE` variables and `IS_ONLINE_RAW` and `IS_OFFLINE_RAW`.
+
+### Example :
 
 ```cmake
 include(Ping)
@@ -163,6 +188,8 @@ Prevents building the project from his source directory.
 ## [Standards.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Standards.cmake) : ##
 Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
 
+### Example :
+
 ```cmake
   include(Standard)
   cxx_20()
@@ -170,6 +197,8 @@ Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
 
 ## [Testings.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Testings.cmake) : ##
 Some `CMake` functions to perform some tests in `CMake files`.
+
+### Example :
 
 <table>
  <tr>
@@ -192,7 +221,7 @@ Some `CMake` functions to perform some tests in `CMake files`.
 </td>
   <td> 
    <p align="center">
-    <img src="https://github.com/flagarde/CMakeCM/blob/master/docs/pictures/Testings.png" alt="Testings" />
+    <img src="https://raw.githubusercontent.com/flagarde/CMakeCM/main/docs/pictures/Testings.png" alt="Testings" />
   </p>
   </td>
  </tr>
