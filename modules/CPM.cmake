@@ -5,7 +5,7 @@ if(POLICY CMP0077)
   cmake_policy(SET CMP0077 NEW)
 endif()
 
-# https://cmake.org/cmake/help/latest/policy/CMP0077.html
+# https://cmake.org/cmake/help/latest/policy/CMP0097.html
 if(POLICY CMP0097)
   cmake_policy(SET CMP0097 NEW)
 endif()
