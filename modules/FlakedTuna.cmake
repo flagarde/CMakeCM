@@ -17,6 +17,6 @@ print_options(REPOSITORY  FlakedTuna)
 
 CPMFindPackage(NAME FlakedTuna
                GIT_REPOSITORY ${FLAKEDTUNA_REPOSITORY}
-               GIT_TAG ${FLAKEDTUNA_VERSION}
+               VERSION ${FLAKEDTUNA_VERSION}
                FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
                OPTIONS ${FlakedTuna_OPTIONS})
