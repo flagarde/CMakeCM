@@ -1,3 +1,4 @@
+cmcm_module(CLI11.cmake LOCAL modules/CLI11.cmake VERSION 1)
 cmcm_module(Colors.cmake LOCAL modules/Colors.cmake VERSION 1)
 cmcm_module(CPM.cmake LOCAL modules/CPM.cmake VERSION 1)
 cmcm_module(DefaultInstallPrefix.cmake LOCAL modules/DefaultInstallPrefix.cmake VERSION 1)
