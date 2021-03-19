@@ -29,4 +29,5 @@ CPMFindPackage(NAME CLI11
                GIT_REPOSITORY ${CLI11_REPOSITORY}
                VERSION ${CLI11_VERSION}
                FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
+               GIT_SUBMODULES ""
                OPTIONS "${CLI11_OPTIONS}")
