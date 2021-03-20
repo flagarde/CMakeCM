@@ -1,7 +1,7 @@
 include_guard(GLOBAL)
 
 if(NOT CMAKECM_MESSAGES_MODULE_LOADED)
-  set(CMAKECM_MESSAGES_MODULE_LOADED "TRUE" CACHE BOOL "Messages has been loaded" FORCE) 
+  set(CMAKECM_MESSAGES_MODULE_LOADED "TRUE") 
 
   include(Colors)
  
