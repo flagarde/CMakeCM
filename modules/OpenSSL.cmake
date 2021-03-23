@@ -22,7 +22,7 @@ if(NOT DEFINED OPENSSL_URL_HASH)
   set(OPENSSL_URL_HASH "SHA256=aaf2fcb575cdf6491b98ab4829abf78a3dec8402b8b81efc8f23c00d443981bf")
 endif()
 
-if(USE_SYSTEM_OPENSSL)
+if(${USE_SYSTEM_OPENSSL})
   find_package(OpenSSL QUIET)
   if(OPENSSL_FOUND)
     find_package(OpenSSL)
