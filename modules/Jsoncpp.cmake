@@ -8,7 +8,7 @@ if(NOT DEFINED JSONCPP_REPOSITORY)
   set(JSONCPP_REPOSITORY "https://gitlab.com/ExternalRepositories/jsoncpp")
 endif()
 
-if(USE_SYSTEM_JSONCPP)
+if(${USE_SYSTEM_JSONCPP})
   find_package(jsoncpp QUIET)
   if(jsoncpp_FOUND)
     find_package(jsoncpp)
