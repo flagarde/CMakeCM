@@ -1,18 +1,13 @@
 include_guard(GLOBAL)
 
 # https://cmake.org/cmake/help/latest/policy/CMP0077.html
-if(POLICY CMP0077)
-  cmake_policy(SET CMP0077 NEW)
-endif()
-
-# https://cmake.org/cmake/help/latest/policy/CMP0077.html
 if(POLICY CMP0097)
   cmake_policy(SET CMP0097 NEW)
 endif()
 
 # If you don't provide version.
 if(NOT DEFINED CPM_DEFAULT_VERSION)
-  set(CPM_DEFAULT_VERSION "0.31.1")
+  set(CPM_DEFAULT_VERSION "0.32.0")
 endif()
 
 # Bypass the version given by the user.
