@@ -36,19 +36,6 @@ SSL_CTX *create_context()
 void configure_context(SSL_CTX *ctx)
 {
   SSL_CTX_set_ecdh_auto(ctx, 1);
-
-  /* Set the key and cert */
-  if (SSL_CTX_use_certificate_file(ctx, "cert.pem", SSL_FILETYPE_PEM) <= 0)
-  {
-    ERR_print_errors_fp(stderr);
-    exit(EXIT_FAILURE);
-  }
-
-  if (SSL_CTX_use_PrivateKey_file(ctx, "key.pem", SSL_FILETYPE_PEM) <= 0 )
-  {
-    ERR_print_errors_fp(stderr);
-    exit(EXIT_FAILURE);
-  }
 }
 
 int main(int argc, char **argv)
