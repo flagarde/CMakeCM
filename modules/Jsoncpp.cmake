@@ -5,7 +5,7 @@ if(NOT DEFINED JSONCPP_VERSION)
 endif()
 
 if(NOT DEFINED JSONCPP_REPOSITORY)
-  set(JSONCPP_REPOSITORY "https://gitlab.com/ExternalRepositories/jsoncpp")
+  set(JSONCPP_REPOSITORY "https://gitlab.com/ExternalRepositories/jsoncpp.git")
 endif()
 
 if(${USE_SYSTEM_JSONCPP})
