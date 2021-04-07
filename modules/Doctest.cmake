@@ -32,5 +32,5 @@ CPMAddPackage(NAME doctest GIT_REPOSITORY "${DOCTEST_REPOSITORY}" GIT_TAG "${DOC
 if(doctest_ADDED)
   include("${doctest_SOURCE_DIR}/scripts/cmake/doctest.cmake")
 else()
-  include("${CMAKE_INSTALL_PREFIX}/lib/cmake/doctest/doctest.cmake")
+  include("${CMAKE_INSTALL_LIBDIR}/cmake/doctest/doctest.cmake")
 endif()
