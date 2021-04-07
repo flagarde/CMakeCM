@@ -169,6 +169,9 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
  </tr>
 </table>
 
+## [OpenSSL.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/OpenSSL.cmake) : ##
+Use `openssl-cmake` https://github.com/flagarde/openssl-cmake to compile `OpenSSL`.
+
 ## [Ping.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Ping.cmake) : ##
 Test if you are online. Try to download [Ping](https://github.com/flagarde/Ping) an populate the `IS_ONLINE` and `IS_OFFLINE` variables and `IS_ONLINE_RAW` and `IS_OFFLINE_RAW`.
 
@@ -226,5 +229,8 @@ Some `CMake` functions to perform some tests in `CMake files`.
   </td>
  </tr>
 </table>
+
+## [Zlib-ng.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Zlib-ng.cmake) : ##
+Compile `zlib-ng` https://github.com/zlib-ng/zlib-ng.
 
 # Remote

@@ -2,6 +2,14 @@ include_guard(GLOBAL)
 
 include(Messages)
 
+if(NOT DEFINED OPENSSLCMAKE_REPOSITORY)
+  set(OPENSSLCMAKE_REPOSITORY "https://gitlab.com/flagarde/openssl-cmake.git")
+endif()
+
+if(NOT DEFINED OPENSSLCMAKE_VERSION)
+  set(OPENSSLCMAKE_VERSION "v2.0")
+endif()
+
 if(${USE_SYSTEM_OPENSSL})
   find_package(OpenSSL QUIET)
   if(OPENSSL_FOUND)
@@ -17,25 +25,6 @@ else()
 endif()
 
 if(COMPILE_OPENSSL)
-  if(NOT DEFINED OPENSSLCMAKE_REPOSITORY)
-    set(OPENSSLCMAKE_REPOSITORY "https://gitlab.com/flagarde/openssl-cmake")
-  endif()
-
-  if(NOT DEFINED OPENSSLCMAKE_VERSION)
-    set(OPENSSLCMAKE_VERSION "v2.0")
-  endif()
-
-  if(NOT DEFINED OPENSSL_VERSION)
-    set(OPENSSL_VERSION "1.1.1k")
-  endif()
-
-  if(NOT DEFINED OPENSSL_URL)
-    set(OPENSSL_URL "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz")
-  endif()
-
-  if(NOT DEFINED OPENSSL_URL_HASH)
-    set(OPENSSL_URL_HASH "SHA256=892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5")
-  endif()
 
   include(CPM)
   cpm()
@@ -88,8 +77,7 @@ if(COMPILE_OPENSSL)
       OPENSSL_SSL_LIBRARY
       OPENSSL_LIBRARIES
     VERSION_VAR
-      OPENSSL_VERSION_STRING
-  )
+      OPENSSL_VERSION_STRING)
 
   find_package(OpenSSL REQUIRED)
   endif()
