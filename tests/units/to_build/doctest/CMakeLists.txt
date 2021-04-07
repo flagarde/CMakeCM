@@ -15,4 +15,4 @@ include(Doctest)
 # ---- Create binary ----
 add_executable(TestDoctest main.cpp)
 target_link_libraries(TestDoctest PRIVATE doctest::doctest)
-doctest_discover_tests(TestDoctest)
+doctest_discover_tests(TestDoctest ADD_LABELS TestDoctest )

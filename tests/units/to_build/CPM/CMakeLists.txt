@@ -12,7 +12,7 @@ set(CMAKE_MODULE_PATH "${MODULES_PATH}")
 include(Testings)
 include(CPM)
 
-cpm(VERSION 0.31.1)
+cpm()
 
 declare_option(REPOSITORY fibonacci OPTION CMAKE_CXX_STANDARD VALUE 17)
 declare_option(REPOSITORY fibonacci OPTION CMAKE_CXX_STANDARD_REQUIRED VALUE TRUE)
@@ -29,4 +29,4 @@ CPMAddPackage(
 # ---- Create binary ----
 add_executable(TestCPM main.cpp)
 target_link_libraries(TestCPM fibonacci)
-add_test(TestCPM COMMAND TestCPM)
+add_test(TestCPM COMMAND TestCPM )

@@ -1,9 +1,6 @@
 include_guard(GLOBAL)
 
-# https://cmake.org/cmake/help/latest/policy/CMP0077.html
-if(POLICY CMP0077)
-  cmake_policy(SET CMP0077 NEW)
-endif()
+include(GNUInstallDirs)
 
 # https://cmake.org/cmake/help/latest/policy/CMP0097.html
 if(POLICY CMP0097)
@@ -12,7 +9,7 @@ endif()
 
 # If you don't provide version.
 if(NOT DEFINED CPM_DEFAULT_VERSION)
-  set(CPM_DEFAULT_VERSION "0.31.1")
+  set(CPM_DEFAULT_VERSION "0.32.0")
 endif()
 
 # Bypass the version given by the user.
@@ -39,7 +36,7 @@ macro(cpm)
   endif()
 
   #Make CPm looks a bit like CMMM
-  set(CPM_INDENT "${Return}${BoldGreen}** [CPM]")
+  set(CPM_INDENT "${BoldGreen}[CPM]")
 
   include("${CPM_DOWNLOAD_LOCATION}")
 endmacro()
