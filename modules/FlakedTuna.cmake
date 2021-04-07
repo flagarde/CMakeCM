@@ -8,7 +8,7 @@ if(NOT DEFINED FLAKEDTUNA_VERSION)
 endif()
 
 if(NOT DEFINED FLAKEDTUNA_REPOSITORY)
-  set(FLAKEDTUNA_REPOSITORY "https://gitlab.com/flagarde/FlakedTuna")
+  set(FLAKEDTUNA_REPOSITORY "https://gitlab.com/flagarde/FlakedTuna.git")
 endif()
 
 declare_option(REPOSITORY FlakedTuna OPTION BUILD_TESTS VALUE OFF)
