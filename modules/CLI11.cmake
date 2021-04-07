@@ -4,7 +4,7 @@ include(CPM)
 cpm()
 
 if(NOT DEFINED CLI11_REPOSITORY)
-  set(CLI11_REPOSITORY "https://gitlab.com/ExternalRepositories/CLI11")
+  set(CLI11_REPOSITORY "https://gitlab.com/ExternalRepositories/CLI11.git")
 endif()
 
 if(NOT DEFINED CLI11_TAG)
