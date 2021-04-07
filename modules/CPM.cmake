@@ -1,5 +1,7 @@
 include_guard(GLOBAL)
 
+include(GNUInstallDirs)
+
 # https://cmake.org/cmake/help/latest/policy/CMP0077.html
 if(POLICY CMP0097)
   cmake_policy(SET CMP0097 NEW)
