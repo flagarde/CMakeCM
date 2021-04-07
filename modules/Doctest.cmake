@@ -18,7 +18,7 @@ if(NOT DEFINED DOCTEST_VERSION)
 endif()
 
 if(NOT DEFINED DOCTEST_REPOSITORY)
-  set(DOCTEST_REPOSITORY "https://gitlab.com/ExternalRepositories/doctest")
+  set(DOCTEST_REPOSITORY "https://gitlab.com/ExternalRepositories/doctest.git")
 endif()
 
 declare_option(REPOSITORY doctest OPTION DOCTEST_WITH_TESTS VALUE FALSE)
