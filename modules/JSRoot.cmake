@@ -4,7 +4,7 @@ include(CPM)
 cpm()
 
 if(NOT DEFINED JSROOT_REPOSITORY)
-  set(JSROOT_REPOSITORY "https://gitlab.com/ExternalRepositories/jsroot")
+  set(JSROOT_REPOSITORY "https://gitlab.com/ExternalRepositories/jsroot.git")
 endif()
 
 if(NOT DEFINED JSROOT_VERSION)
