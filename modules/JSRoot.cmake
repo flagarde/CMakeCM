@@ -14,7 +14,7 @@ endif()
 declare_option(REPOSITORY jsroot OPTION JSROOT_INSTALL_PREFIX VALUE "${CMAKE_INSTALL_PREFIX}/www/jsroot")
 print_options(REPOSITORY  jsroot)
 
-CPMFindPackage(NAME jsroot
+CPMAddPackage(NAME jsroot
                GIT_REPOSITORY ${JSROOT_REPOSITORY}
                GIT_TAG ${JSROOT_VERSION}
                FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
