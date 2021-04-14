@@ -128,6 +128,8 @@ default_install_prefix("${CMAKE_CURRENT_SOURCE_DIR}/install")
 ## [Fmt.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Fmt.cmake) : ##
 Use `CPM` to setup `fmt` https://github.com/fmtlib/fmt
 
+## [MagicEnum.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/MagicEnum.cmake) : ##
+Use `CPM` to setup `magic_enum` https://github.com/Neargye/magic_enum
 
 ## [Messages.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Messages.cmake) : ##
 Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN` and `ERROR` are created by defaults.
@@ -201,6 +203,8 @@ Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
   include(Standard)
   cxx_20()
 ```
+## [Spdlog.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Spdlog.cmake) : ##
+Use `CPM` to setup `spdlog` https://github.com/gabime/spdlog
 
 ## [Testings.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Testings.cmake) : ##
 Some `CMake` functions to perform some tests in `CMake files`.

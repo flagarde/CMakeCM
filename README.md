@@ -52,10 +52,12 @@ The `REMOTE` is a `URL` to the file to download for the module. In order for you
   * [DefaultInstallPrefix](modules/DefaultInstallPrefix.cmake) : Set `CMAKE_INSTALL_PREFIX` if it has not been defined before.
   * [Doctest](modules/Doctest.cmake) : Use `CPM` to setup `doctest`.
   * [Fmt](modules/Fmt.cmake) : Use `CPM` to setup `fmt`.
+  * [MagicEnum](modules/MagicEnum.cmake) : Use `CPM` to setup `magic_enum`.
   * [Messages](modules/Messages.cmake) : Redefines the `message` command to use personnalized styles.
   * [OpenSSL](modules/OpenSSL.cmake) : Use `openssl-cmake` https://github.com/flagarde/openssl-cmake to compile `OpenSSL` using `CPM`.
   * [Ping](modules/Ping.cmake) : A basic ping for CMake. Test if you are online.
   * [PreventInSourceBuilds](modules/PreventInSourceBuilds.cmake) : Prevents building the project from his source directory.
+  * [Spdlog](modules/Spdlog.cmake) : Use `CPM` to setup `spdlog`.
   * [Standards](modules/Standards.cmake) : Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
   * [Testings](modules/Testings.cmake) : Some `CMake` functions to perform some tests in `CMake files`.
   * [Zlib-ng](Zlib-ng.cmake) : Compile `zlib-ng` https://github.com/zlib-ng/zlib-ng using `CPM`.
