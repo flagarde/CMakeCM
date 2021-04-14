@@ -124,7 +124,11 @@ include(DefaultInstallPrefix)
 
 default_install_prefix("${CMAKE_CURRENT_SOURCE_DIR}/install")
 ```
-  
+
+## [Fmt.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Fmt.cmake) : ##
+Use `CPM` to setup `fmt` https://github.com/fmtlib/fmt
+
+
 ## [Messages.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Messages.cmake) : ##
 Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN` and `ERROR` are created by defaults.
 

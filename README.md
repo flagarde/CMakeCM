@@ -51,6 +51,7 @@ The `REMOTE` is a `URL` to the file to download for the module. In order for you
   * [CPM](modules/CPM.cmake) : Wrapper for `CPM` the setup-free CMake dependency management.
   * [DefaultInstallPrefix](modules/DefaultInstallPrefix.cmake) : Set `CMAKE_INSTALL_PREFIX` if it has not been defined before.
   * [Doctest](modules/Doctest.cmake) : Use `CPM` to setup `doctest`.
+  * [Fmt](modules/Fmt.cmake) : Use `CPM` to setup `fmt`.
   * [Messages](modules/Messages.cmake) : Redefines the `message` command to use personnalized styles.
   * [OpenSSL](modules/OpenSSL.cmake) : Use `openssl-cmake` https://github.com/flagarde/openssl-cmake to compile `OpenSSL` using `CPM`.
   * [Ping](modules/Ping.cmake) : A basic ping for CMake. Test if you are online.
