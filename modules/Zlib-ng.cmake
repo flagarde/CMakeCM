@@ -49,7 +49,7 @@ if(COMPILE_ZLIB)
   unset(ZLIB_FOUND PARENT_SCOPE)
   set(ZLIB_FOUND TRUE CACHE BOOL "" FORCE)
 
-  CPMFindPackage(NAME zlib-ng
+  CPMAddPackage(NAME zlib-ng
                  GIT_REPOSITORY "${ZLIB-NG_REPOSITORY}"
                  GIT_TAG "${ZLIB-NG_VERSION}"
                  VERSION "${ZLIB-NG_VERSION}"
