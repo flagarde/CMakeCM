@@ -4,11 +4,11 @@ include(CPM)
 cpm()
 
 if(NOT DEFINED FMT_REPOSITORY)
-  set(FMT_REPOSITORY "fmt/fmt")
+  set(FMT_REPOSITORY "fmtlib/fmt")
 endif()
 
 if(NOT DEFINED FMT_VERSION)
-  set(FMT_VERSION "v7.1.3")
+  set(FMT_VERSION "7.1.3")
 endif()
 
 declare_option(REPOSITORY fmt OPTION FMT_PEDANTIC VALUE OFF)
