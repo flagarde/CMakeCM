@@ -21,7 +21,7 @@ declare_option(REPOSITORY fmt OPTION FMT_CUDA_TEST VALUE OFF)
 declare_option(REPOSITORY fmt OPTION FMT_OS VALUE ON)
 print_options(REPOSITORY  fmt)
 
-CPMFindPackage(NAME fmt
+CPMAddPackage(NAME fmt
                GITHUB_REPOSITORY ${FMT_REPOSITORY}
                GIT_TAG ${FMT_VERSION}
                FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
