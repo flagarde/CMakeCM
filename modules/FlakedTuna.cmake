@@ -15,7 +15,7 @@ declare_option(REPOSITORY FlakedTuna OPTION BUILD_TESTS VALUE OFF)
 declare_option(REPOSITORY FlakedTuna OPTION BUILD_EXAMPLES VALUE OFF)
 print_options(REPOSITORY  FlakedTuna)
 
-CPMFindPackage(NAME FlakedTuna
+CPMAddPackage(NAME FlakedTuna
                GIT_REPOSITORY ${FLAKEDTUNA_REPOSITORY}
                VERSION ${FLAKEDTUNA_VERSION}
                FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
