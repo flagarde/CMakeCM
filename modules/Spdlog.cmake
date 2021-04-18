@@ -30,6 +30,6 @@ print_options(REPOSITORY  spdlog)
 
 CPMAddPackage(NAME spdlog
               GITLAB_REPOSITORY ${SPDLOG_REPOSITORY}
-              VERSION ${SPDLOG_VERSION}
+              GIT_TAG ${SPDLOG_VERSION}
               FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
               OPTIONS "${spdlog_OPTIONS}")
