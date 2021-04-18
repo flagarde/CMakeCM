@@ -29,7 +29,7 @@ declare_option(REPOSITORY spdlog OPTION SPDLOG_NO_EXCEPTIONS VALUE OFF)
 print_options(REPOSITORY  spdlog)
 
 CPMAddPackage(NAME spdlog
-              GITHUB_REPOSITORY ${SPDLOG_REPOSITORY}
+              GITLAB_REPOSITORY ${SPDLOG_REPOSITORY}
               VERSION ${SPDLOG_VERSION}
               FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
               OPTIONS "${spdlog_OPTIONS}")
