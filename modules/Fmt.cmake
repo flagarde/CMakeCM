@@ -22,7 +22,7 @@ declare_option(REPOSITORY fmt OPTION FMT_OS VALUE ON)
 print_options(REPOSITORY  fmt)
 
 CPMAddPackage(NAME fmt
-               GITLAB_REPOSITORY ${FMT_REPOSITORY}
+               GIT_REPOSITORY ${FMT_REPOSITORY}
                GIT_TAG ${FMT_VERSION}
                FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
                OPTIONS "${fmt_OPTIONS}"
