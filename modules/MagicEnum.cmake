@@ -4,7 +4,7 @@ include(CPM)
 cpm()
 
 if(NOT DEFINED MAGIC_ENUM_REPOSITORY)
-  set(MAGIC_ENUM_REPOSITORY "Neargye/magic_enum")
+  set(MAGIC_ENUM_REPOSITORY "https://github.com/Neargye/magic_enum.git")
 endif()
 
 if(NOT DEFINED MAGIC_ENUM_VERSION)
@@ -17,7 +17,7 @@ declare_option(REPOSITORY magic_enum OPTION MAGIC_ENUM_OPT_INSTALL VALUE ON)
 print_options(REPOSITORY  magic_enum)
 
 CPMAddPackage(NAME magic_enum
-              GITHUB_REPOSITORY ${MAGIC_ENUM_REPOSITORY}
+              GIT_REPOSITORY ${MAGIC_ENUM_REPOSITORY}
               GIT_TAG ${MAGIC_ENUM_VERSION}
               FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
               OPTIONS "${magic_enum_OPTIONS}")
