@@ -4,7 +4,7 @@ include(CPM)
 cpm()
 
 if(NOT DEFINED FMT_REPOSITORY)
-  set(FMT_REPOSITORY "fmtlib/fmt")
+  set(FMT_REPOSITORY "https://github.com/fmtlib/fmt")
 endif()
 
 if(NOT DEFINED FMT_TAG)
