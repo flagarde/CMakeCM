@@ -7,8 +7,8 @@ if(NOT DEFINED FMT_REPOSITORY)
   set(FMT_REPOSITORY "fmtlib/fmt")
 endif()
 
-if(NOT DEFINED FMT_VERSION)
-  set(FMT_VERSION "7.1.3")
+if(NOT DEFINED FMT_TAG)
+  set(FMT_TAG "7.1.3")
 endif()
 
 declare_option(REPOSITORY fmt OPTION FMT_PEDANTIC VALUE OFF)
@@ -23,7 +23,7 @@ print_options(REPOSITORY  fmt)
 
 CPMAddPackage(NAME fmt
                GIT_REPOSITORY ${FMT_REPOSITORY}
-               GIT_TAG ${FMT_VERSION}
+               GIT_TAG ${FMT_TAG}
                FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
                OPTIONS "${fmt_OPTIONS}"
               )
