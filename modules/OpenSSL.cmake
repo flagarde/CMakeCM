@@ -6,8 +6,8 @@ if(NOT DEFINED OPENSSLCMAKE_REPOSITORY)
   set(OPENSSLCMAKE_REPOSITORY "https://gitlab.com/flagarde/openssl-cmake.git")
 endif()
 
-if(NOT DEFINED OPENSSLCMAKE_VERSION)
-  set(OPENSSLCMAKE_VERSION "v2.0")
+if(NOT DEFINED OPENSSLCMAKE_TAG)
+  set(OPENSSLCMAKE_TAG "v2.0")
 endif()
 
 if(${USE_SYSTEM_OPENSSL})
@@ -54,7 +54,7 @@ if(COMPILE_OPENSSL)
 
   CPMAddPackage(NAME "OpenSSL-CMake"
                  GIT_REPOSITORY "${OPENSSLCMAKE_REPOSITORY}"
-                 GIT_TAG "${OPENSSLCMAKE_VERSION}"
+                 GIT_TAG "${OPENSSLCMAKE_TAG}"
                  FETCHCONTENT_UPDATES_DISCONNECTED "${IS_OFFLINE}"
                  OPTIONS "${OpenSSL-CMake_OPTIONS}")
 
