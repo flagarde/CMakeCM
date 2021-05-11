@@ -1,7 +1,7 @@
 include(Messages)
 
-if(NOT DEFINED JSONCPP_VERSION)
-  set(JSONCPP_VERSION "1.9.4")  
+if(NOT DEFINED JSONCPP_TAG)
+  set(JSONCPP_TAG "1.9.4")  
 endif()
 
 if(NOT DEFINED JSONCPP_REPOSITORY)
@@ -42,8 +42,7 @@ if(COMPILE_JSONCPP)
 
   CPMAddPackage(NAME jsoncpp
                  GIT_REPOSITORY "${JSONCPP_REPOSITORY}"
-                 GIT_TAG "${JSONCPP_VERSION}"
-                 VERSION "v${JSONCPP_VERSION}"
+                 GIT_TAG "${JSONCPP_TAG}"
                  FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
                  OPTIONS "${jsoncpp_OPTIONS}")
   if(jsoncpp_ADDED)
