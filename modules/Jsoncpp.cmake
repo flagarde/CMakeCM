@@ -19,7 +19,9 @@ if(${USE_SYSTEM_JSONCPP})
   endif()
 else()
   set(COMPILE_JSONCPP TRUE)
-  message(NOTE "jsoncpp will be compiled using ${JSONCPP_REPOSITORY} version ${JSONCPP_VERSION}.")
+  if(jsoncpp_ADDED)
+    message(NOTE "jsoncpp will be compiled using ${JSONCPP_REPOSITORY} version ${JSONCPP_VERSION}.")
+  endif()
 endif()
 
 
