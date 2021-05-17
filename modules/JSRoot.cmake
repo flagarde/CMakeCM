@@ -4,11 +4,11 @@ include(CPM)
 cpm()
 
 if(NOT DEFINED JSROOT_REPOSITORY)
-  set(JSROOT_REPOSITORY "https://gitlab.com/ExternalRepositories/jsroot.git")
+  set(JSROOT_REPOSITORY "https://github.com/root-project/jsroot.git")
 endif()
 
 if(NOT DEFINED JSROOT_VERSION)
-  set(JSROOT_VERSION "6.0.1")
+  set(JSROOT_VERSION "6.1.0")
 endif()
 
 declare_option(REPOSITORY jsroot OPTION JSROOT_INSTALL_PREFIX VALUE "${CMAKE_INSTALL_PREFIX}/www/jsroot")
