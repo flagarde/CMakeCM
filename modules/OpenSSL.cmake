@@ -91,6 +91,6 @@ if(COMPILE_OPENSSL)
     VERSION_VAR
       OPENSSL_VERSION_STRING)
 
-  find_package(OpenSSL REQUIRED)
+  find_package(OpenSSL REQUIRED QUIET)
   endif()
 endif()
