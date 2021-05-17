@@ -2,12 +2,12 @@ include_guard(GLOBAL)
 
 include(Messages)
 
-if(NOT DEFINED ZLIB-NG_VERSION)
-  set(ZLIB-NG_VERSION "2.0.2")
+if(NOT DEFINED ZLIB-NG_TAG)
+  set(ZLIB-NG_TAG "2.0.3")
 endif()
 
 if(NOT DEFINED ZLIB-NG_REPOSITORY)
-  set(ZLIB-NG_REPOSITORY "https://gitlab.com/ExternalRepositories/zlib-ng.git")
+  set(ZLIB-NG_REPOSITORY "https://github.com/zlib-ng/zlib-ng.git")
 endif()
 
 if(${USE_SYSTEM_ZLIB})
@@ -51,8 +51,7 @@ if(COMPILE_ZLIB)
 
   CPMAddPackage(NAME zlib-ng
                  GIT_REPOSITORY "${ZLIB-NG_REPOSITORY}"
-                 GIT_TAG "${ZLIB-NG_VERSION}"
-                 VERSION "${ZLIB-NG_VERSION}"
+                 GIT_TAG "${ZLIB-NG_TAG}"
                  FETCHCONTENT_UPDATES_DISCONNECTED "${IS_OFFLINE}"
                  OPTIONS "${zlib-ng_OPTIONS}")
 
