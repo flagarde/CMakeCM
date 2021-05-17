@@ -3,7 +3,7 @@ include_guard(GLOBAL)
 include(Messages)
 
 if(NOT DEFINED OPENSSLCMAKE_REPOSITORY)
-  set(OPENSSLCMAKE_REPOSITORY "https://gitlab.com/flagarde/openssl-cmake.git")
+  set(OPENSSLCMAKE_REPOSITORY "https://github.com/flagarde/openssl-cmake.git")
 endif()
 
 if(NOT DEFINED OPENSSLCMAKE_TAG)
