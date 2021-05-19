@@ -5,7 +5,7 @@ if(NOT DEFINED JSONCPP_TAG)
 endif()
 
 if(NOT DEFINED JSONCPP_REPOSITORY)
-  set(JSONCPP_REPOSITORY "https://gitlab.com/ExternalRepositories/jsoncpp.git")
+  set(JSONCPP_REPOSITORY "https://github.com/open-source-parsers/jsoncpp.git")
 endif()
 
 if(${USE_SYSTEM_JSONCPP})
