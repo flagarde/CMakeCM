@@ -6,11 +6,11 @@ cpm()
 include(Fmt)
 
 if(NOT DEFINED SPDLOG_REPOSITORY)
-  set(SPDLOG_REPOSITORY "gabime/spdlog")
+  set(SPDLOG_REPOSITORY "https://github.com/gabime/spdlog.git")
 endif()
 
-if(NOT DEFINED SPDLOG_VERSION)
-  set(SPDLOG_VERSION "1.8.5")
+if(NOT DEFINED SPDLOG_TAG)
+  set(SPDLOG_TAG "1.8.5")
 endif()
 
 declare_option(REPOSITORY spdlog OPTION SPDLOG_BUILD_ALL VALUE OFF)
@@ -30,6 +30,6 @@ print_options(REPOSITORY  spdlog)
 
 CPMAddPackage(NAME spdlog
               GIT_REPOSITORY ${SPDLOG_REPOSITORY}
-              GIT_TAG ${SPDLOG_VERSION}
+              GIT_TAG ${SPDLOG_TAG}
               FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
               OPTIONS "${spdlog_OPTIONS}")
