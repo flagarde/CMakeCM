@@ -4,11 +4,11 @@ include(CPM)
 cpm()
 
 if(NOT DEFINED CLI11_REPOSITORY)
-  set(CLI11_REPOSITORY "https://gitlab.com/ExternalRepositories/CLI11.git")
+  set(CLI11_REPOSITORY "https://github.com/CLIUtils/CLI11.git")
 endif()
 
 if(NOT DEFINED CLI11_TAG)
-  set(CLI11_TAG "master")
+  set(CLI11_TAG "v1.9.1")
 endif()
 
 declare_option(REPOSITORY CLI11 OPTION CLI11_WARNINGS_AS_ERRORS VALUE OFF)
