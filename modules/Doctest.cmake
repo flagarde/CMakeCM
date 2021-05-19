@@ -13,12 +13,12 @@ else()
  endif()
 endif()
 
-if(NOT DEFINED DOCTEST_VERSION)
-  set(DOCTEST_VERSION "2.4.6")
+if(NOT DEFINED DOCTEST_TAG)
+  set(DOCTEST_TAG "2.4.6")
 endif()
 
 if(NOT DEFINED DOCTEST_REPOSITORY)
-  set(DOCTEST_REPOSITORY "https://gitlab.com/ExternalRepositories/doctest.git")
+  set(DOCTEST_REPOSITORY "https://github.com/onqtam/doctest.git")
 endif()
 
 declare_option(REPOSITORY doctest OPTION DOCTEST_WITH_TESTS VALUE FALSE)
@@ -27,7 +27,7 @@ declare_option(REPOSITORY doctest OPTION DOCTEST_NO_INSTALL VALUE FALSE)
 declare_option(REPOSITORY doctest OPTION DOCTEST_USE_STD_HEADERS VALUE TRUE)
 print_options(REPOSITORY  doctest)
 
-CPMAddPackage(NAME doctest GIT_REPOSITORY "${DOCTEST_REPOSITORY}" GIT_TAG "${DOCTEST_VERSION}" OPTIONS "${doctest_OPTIONS}")
+CPMAddPackage(NAME doctest GIT_REPOSITORY "${DOCTEST_REPOSITORY}" GIT_TAG "${DOCTEST_TAG}" OPTIONS "${doctest_OPTIONS}")
 
 if(doctest_ADDED)
   include("${doctest_SOURCE_DIR}/scripts/cmake/doctest.cmake")
