@@ -62,6 +62,7 @@ The `REMOTE` is a `URL` to the file to download for the module. In order for you
   * [Spdlog](modules/Spdlog.cmake) : Use `CPM` to setup `spdlog`.
   * [Standards](modules/Standards.cmake) : Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
   * [Testings](modules/Testings.cmake) : Some `CMake` functions to perform some tests in `CMake files`.
+  * [Toml11](modules/Toml11.cmake) : Use `CPM` to setup `toml11`.
   * [Zlib-ng](Zlib-ng.cmake) : Compile `zlib-ng` https://github.com/zlib-ng/zlib-ng using `CPM`.
 
 * ## Remote :

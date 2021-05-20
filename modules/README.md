@@ -244,6 +244,9 @@ Some `CMake` functions to perform some tests in `CMake files`.
  </tr>
 </table>
 
+## [Toml11.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Toml11.cmake) : ##
+Use `CPM` to setup `toml11` https://github.com/ToruNiina/toml11
+
 ## [Zlib-ng.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Zlib-ng.cmake) : ##
 Compile `zlib-ng` https://github.com/zlib-ng/zlib-ng.
 
