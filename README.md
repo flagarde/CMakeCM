@@ -52,7 +52,8 @@ The `REMOTE` is a `URL` to the file to download for the module. In order for you
   * [DefaultInstallPrefix](modules/DefaultInstallPrefix.cmake) : Set `CMAKE_INSTALL_PREFIX` if it has not been defined before.
   * [Doctest](modules/Doctest.cmake) : Use `CPM` to setup `doctest`.
   * [Fmt](modules/Fmt.cmake) : Use `CPM` to setup `fmt`.
-  * [GetLatestCMakeVersion](modules/GetLatestCMakeVersion.cmake) : Obtain the CMake's latest version number. 
+  * [GetLatestCMakeVersion](modules/GetLatestCMakeVersion.cmake) : Obtain the CMake's latest version number.
+  * [IXWebSocket](modules/IXWebSocket.cmake) : Use `CPM` to setup `IXWebSocket`.
   * [MagicEnum](modules/MagicEnum.cmake) : Use `CPM` to setup `magic_enum`.
   * [Messages](modules/Messages.cmake) : Redefines the `message` command to use personnalized styles.
   * [OpenSSL](modules/OpenSSL.cmake) : Use `openssl-cmake` https://github.com/flagarde/openssl-cmake to compile `OpenSSL` using `CPM`.

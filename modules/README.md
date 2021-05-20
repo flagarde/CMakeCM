@@ -131,6 +131,9 @@ Use `CPM` to setup `fmt` https://github.com/fmtlib/fmt
 ## [GetLatestCMakeVersion.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/GetLatestCMakeVersion.cmake) : ##
 Obtain the CMake's latest version number. 
 
+## [IXWebSocket.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/IXWebSocket.cmake) : ##
+Use `CPM` to setup `IXWebSocket` https://github.com/machinezone/IXWebSocket
+
 ## [MagicEnum.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/MagicEnum.cmake) : ##
 Use `CPM` to setup `magic_enum` https://github.com/Neargye/magic_enum
 
