@@ -59,6 +59,7 @@ The `REMOTE` is a `URL` to the file to download for the module. In order for you
   * [OpenSSL](modules/OpenSSL.cmake) : Use `openssl-cmake` https://github.com/flagarde/openssl-cmake to compile `OpenSSL` using `CPM`.
   * [Ping](modules/Ping.cmake) : A basic ping for CMake. Test if you are online.
   * [PreventInSourceBuilds](modules/PreventInSourceBuilds.cmake) : Prevents building the project from his source directory.
+  * [SourceLocation](modules/SourceLocation.cmake) : Use `CPM` to setup `source_location`.
   * [Spdlog](modules/Spdlog.cmake) : Use `CPM` to setup `spdlog`.
   * [Standards](modules/Standards.cmake) : Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
   * [Testings](modules/Testings.cmake) : Some `CMake` functions to perform some tests in `CMake files`.

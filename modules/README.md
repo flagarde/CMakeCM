@@ -200,6 +200,12 @@ endif()
 ## [PreventInSourceBuilds.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/PreventInSourceBuilds.cmake) : ##
 Prevents building the project from his source directory.
 
+## [SourceLocation.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/SourceLocation.cmake) : ##
+Use `CPM` to setup `SourceLocation` https://github.com/flagarde/source_location.git
+
+## [Spdlog.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Spdlog.cmake) : ##
+Use `CPM` to setup `spdlog` https://github.com/gabime/spdlog
+
 ## [Standards.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Standards.cmake) : ##
 Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
 
@@ -209,8 +215,6 @@ Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
   include(Standard)
   cxx_20()
 ```
-## [Spdlog.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Spdlog.cmake) : ##
-Use `CPM` to setup `spdlog` https://github.com/gabime/spdlog
 
 ## [Testings.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Testings.cmake) : ##
 Some `CMake` functions to perform some tests in `CMake files`.
