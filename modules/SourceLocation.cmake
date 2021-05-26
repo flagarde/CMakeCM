@@ -13,7 +13,7 @@ endif()
 
 declare_option(REPOSITORY SourceLocation OPTION BUILD_TESTS VALUE "OFF")
 declare_option(REPOSITORY SourceLocation OPTION BUILD_EXAMPLES VALUE "OFF")
-print_options(REPOSITORY  jsroot)
+print_options(REPOSITORY  SourceLocation)
 
 CPMAddPackage(NAME SourceLocation
                GIT_REPOSITORY ${SOURCELOCATION_REPOSITORY}
