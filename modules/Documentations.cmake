@@ -33,4 +33,6 @@ function(configure_doxyfile)
   configure_file(${CONFIG_FILE} "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile" @ONLY)
 endfunction()
 
-install(DIRECTORY "${DOXYGEN_OUTPUT_DIRECTORY}" DESTINATION "${CMAKE_INSTALL_PREFIX}/docs")
+if(DOXYGEN_FOUND)
+  install(DIRECTORY "${DOXYGEN_OUTPUT_DIRECTORY}" DESTINATION "${CMAKE_INSTALL_PREFIX}/docs")
+endif()
