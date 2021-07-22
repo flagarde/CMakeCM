@@ -165,7 +165,7 @@ if(NOT CMAKECM_MESSAGES_MODULE_LOADED)
   endfunction()
 
   if(NOT NOT_REDEFINE_CMAKE_MODES)
-    if(${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.21")
+    if(${CMAKE_VERSION} VERSION_LESS "3.21")
       message_mode(NAME "FATAL_ERROR" STYLE "BoldRed")
       message_mode(NAME "SEND_ERROR" STYLE "Red")
       message_mode(NAME "WARNING" STYLE "BoldYellow")
