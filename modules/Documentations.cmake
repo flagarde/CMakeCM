@@ -16,9 +16,13 @@ else()
 endif()
 
 function(configure_doxyfile)
+  if(NOT DEFINED DOXYGEN_OUTPUT_DIRECTORY)
+    set(DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/doxygen")
+  endif()
+
   if(NOT DEFINED CONFIG_FILE)
     if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile")
-      set(CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile")
+      set(CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile" PARENT_SCOPE)
     else()
       include(Doxyfile)
       set(CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.in")
@@ -27,3 +31,5 @@ function(configure_doxyfile)
   
   configure_file(${CONFIG_FILE} "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile" @ONLY)
 endfunction()
+
+install(DIRECTORY "${DOXYGEN_OUTPUT_DIRECTORY}" DESTINATION "${CMAKE_INSTALL_PREFIX}/docs")
