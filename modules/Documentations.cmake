@@ -33,6 +33,18 @@ function(configure_doxyfile)
     endif()
   endif()
   
+  if(NOT DEFINED DOXYGEN_PROJECT_NAME)
+    set(DOXYGEN_PROJECT_NAME ${PROJECT_NAME})
+  endif()
+  
+  if(NOT DEFINED DOXYGEN_PROJECT_NUMBER)
+    set(DOXYGEN_PROJECT_NAME ${PROJECT_VERSION})
+  endif()
+  
+  if(NOT DEFINED DOXYGEN_PROJECT_BRIEF)
+    set(DOXYGEN_PROJECT_NAME ${PROJECT_DESCRIPTION})
+  endif()
+  
   configure_file(${CONFIG_FILE} "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile" @ONLY)
 endfunction()
 
