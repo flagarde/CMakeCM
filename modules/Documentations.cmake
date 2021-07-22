@@ -37,5 +37,5 @@ function(configure_doxyfile)
 endfunction()
 
 if(DOXYGEN_FOUND)
-  install(DIRECTORY "${DOXYGEN_OUTPUT_DIRECTORY}/" DESTINATION "${CMAKE_INSTALL_PREFIX}/docs")
+  install(DIRECTORY "${DOXYGEN_OUTPUT_DIRECTORY}/" DESTINATION "docs")
 endif()
