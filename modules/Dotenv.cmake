@@ -4,7 +4,7 @@ include(CPM)
 cpm()
 
 if(NOT DEFINED DOTENV_REPOSITORY)
-    set(DOTENV_REPOSITORY "https://github.com/laserpants/dotenv-cpp")
+    set(DOTENV_REPOSITORY "https://github.com/flagarde/dotenv-cpp")
 endif()
 
 if(NOT DEFINED DOTENV_TAG)
