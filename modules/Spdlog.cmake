@@ -10,7 +10,7 @@ if(NOT DEFINED SPDLOG_REPOSITORY)
 endif()
 
 if(NOT DEFINED SPDLOG_TAG)
-  set(SPDLOG_TAG "v1.8.5")
+  set(SPDLOG_TAG "v1.9.0")
 endif()
 
 declare_option(REPOSITORY spdlog OPTION SPDLOG_BUILD_ALL VALUE OFF)
