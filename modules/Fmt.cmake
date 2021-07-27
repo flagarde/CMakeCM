@@ -8,7 +8,7 @@ if(NOT DEFINED FMT_REPOSITORY)
 endif()
 
 if(NOT DEFINED FMT_TAG)
-  set(FMT_TAG "7.1.3")
+  set(FMT_TAG "8.0.1")
 endif()
 
 declare_option(REPOSITORY fmt OPTION FMT_PEDANTIC VALUE OFF)
