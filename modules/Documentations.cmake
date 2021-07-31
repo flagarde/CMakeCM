@@ -17,7 +17,7 @@ if(DOXYGEN_FOUND)
     set(DOCS_ADD_TO_ALL_STRING "ALL")
   endif()
 
-  add_custom_target(docs ${DOCS_ADD_TO_ALL_STRING} COMMAND Doxygen::doxygen Doxyfile WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/docs" COMMENT "Generating API documentation with Doxygen" VERBATIM)
+  add_custom_target(docs ${DOCS_ADD_TO_ALL_STRING} COMMAND Doxygen::doxygen Doxyfile COMMENT "Generating API documentation with Doxygen" VERBATIM)
   
 else()
   add_custom_target(docs ${DOCS_ADD_TO_ALL_STRING} COMMAND ${CMAKE_COMMAND} -E echo "Doxygen is not found !!" COMMENT "Generating API documentation with Doxygen" VERBATIM)
