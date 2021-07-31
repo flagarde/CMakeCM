@@ -1,12 +1,11 @@
 include_guard(GLOBAL)
 
-file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.in"
-"# Doxyfile 1.9.1
-
 if(POLICY CMP0053)
   cmake_policy(SET CMP0053 NEW)
 endif()
 
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.in"
+"# Doxyfile 1.9.1
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------
