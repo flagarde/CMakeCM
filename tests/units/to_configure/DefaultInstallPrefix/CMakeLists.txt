@@ -15,4 +15,3 @@ include(DefaultInstallPrefix)
 default_install_prefix("${CMAKE_CURRENT_SOURCE_DIR}/install")
 
 ASSERT_NOT_EQUAL("${CMAKE_CURRENT_SOURCE_DIR}/install" "${CMAKE_INSTALL_PREFIX}")
-
