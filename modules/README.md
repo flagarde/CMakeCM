@@ -6,14 +6,14 @@
 Defines some colors and text styles.
 
 ### Example :
-      
+
 <table>
  <tr>
   <td>
-      
+
 ```cmake
 include(Colors)
-  
+
 message(STATUS "${Bold}Bold${Reset}")
 message(STATUS "${Faint}Faint${Reset}")
 message(STATUS "${Italic}Italic${Reset}")
@@ -51,10 +51,10 @@ message(STATUS "${BackGreen}It${BackWhite}${Black}al${BackRed}${White}ia${Reset}
 message(STATUS "${BackBlue}Fr${BackWhite}${Black}an${BackRed}${White}ce${Reset}")
 ```
   </td>
-  <td> 
+  <td>
    <p align="center">
     <img src="https://raw.githubusercontent.com/flagarde/CMakeCM/main/docs/pictures/Colors.png" alt="Colors" />
-   </p> 
+   </p>
   </td>
  </tr>
 </table>
@@ -70,11 +70,11 @@ The wrapper defines some new commands :
 * `undeclare_option(REPOSITORY "X" OPTION "Y")` to reset an option of the repository X.
 
 ### Example :
-      
+
 <table>
  <tr>
   <td>
-      
+
 ```cmake
 include(CPM)
 cpm(VERSION 0.31.1)
@@ -92,10 +92,10 @@ CPMAddPackage(
 )
 ```
   </td>
-  <td> 
+  <td>
    <p align="center">
     <img src="https://raw.githubusercontent.com/flagarde/CMakeCM/main/docs/pictures/CPM.png" alt="CPM" />
-   </p> 
+   </p>
   </td>
  </tr>
 </table>
@@ -115,7 +115,7 @@ doctest_discover_tests(Test)
 ```
 
 ## [DefaultInstallPrefix.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/DefaultInstallPrefix.cmake) : ##
-Set `CMAKE_INSTALL_PREFIX` if it has not been defined before. 
+Set `CMAKE_INSTALL_PREFIX` if it has not been defined before.
 
 ### Example :
 
@@ -129,7 +129,7 @@ default_install_prefix("${CMAKE_CURRENT_SOURCE_DIR}/install")
 Use `CPM` to setup `fmt` https://github.com/fmtlib/fmt
 
 ## [GetLatestCMakeVersion.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/GetLatestCMakeVersion.cmake) : ##
-Obtain the CMake's latest version number. 
+Obtain the CMake's latest version number.
 
 ## [IXWebSocket.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/IXWebSocket.cmake) : ##
 Use `CPM` to setup `IXWebSocket` https://github.com/machinezone/IXWebSocket
@@ -145,10 +145,10 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
 <table>
  <tr>
   <td>
-  
+
 ```cmake
   include(Messages)
-  
+
   message_mode(NAME "VERY_IMPORTANT"
              STYLE "BoldRed"
              APPEND_BEGIN "!!!!!"
@@ -173,7 +173,7 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
   message(VERY_IMPORTANT "VERY_IMPORTANT")
 ```
 </td>
-  <td> 
+  <td>
    <p align="center">
     <img src="https://raw.githubusercontent.com/flagarde/CMakeCM/main/docs/pictures/Messages.png" alt="Messages" />
   </p>
@@ -224,7 +224,7 @@ Some `CMake` functions to perform some tests in `CMake files`.
 <table>
  <tr>
   <td>
-    
+
 ```cmake
   include(Testings)
   ASSERT_NOT_EQUAL("2" "2")
@@ -240,7 +240,7 @@ Some `CMake` functions to perform some tests in `CMake files`.
   ASSERT_FILE_NOT_EXISTS("IDontExist.cmake")
 ```
 </td>
-  <td> 
+  <td>
    <p align="center">
     <img src="https://raw.githubusercontent.com/flagarde/CMakeCM/main/docs/pictures/Testings.png" alt="Testings" />
   </p>

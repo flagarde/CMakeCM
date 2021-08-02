@@ -1,10 +1,10 @@
 include_guard(GLOBAL)
 
 if(NOT CMAKECM_MESSAGES_MODULE_LOADED)
-  set(CMAKECM_MESSAGES_MODULE_LOADED "TRUE") 
+  set(CMAKECM_MESSAGES_MODULE_LOADED "TRUE")
 
   include(Colors)
- 
+
   # CMake default message groups
   list(
     APPEND
@@ -104,7 +104,7 @@ if(NOT CMAKECM_MESSAGES_MODULE_LOADED)
       endif()
     endif()
   endfunction()
-  
+
   # Restore the default MODES
   function(restore_to_default MODE)
     list(FIND DEFAULT_MESSAGE_MODES ${MODE} MODE_FOUND)

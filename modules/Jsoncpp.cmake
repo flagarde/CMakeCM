@@ -1,7 +1,7 @@
 include(Messages)
 
 if(NOT DEFINED JSONCPP_TAG)
-  set(JSONCPP_TAG "1.9.4")  
+  set(JSONCPP_TAG "1.9.4")
 endif()
 
 if(NOT DEFINED JSONCPP_REPOSITORY)
@@ -28,7 +28,7 @@ endif()
 if(COMPILE_JSONCPP)
   include(CPM)
   cpm()
-  
+
   declare_option(REPOSITORY "jsoncpp" OPTION "JSONCPP_WITH_TESTS" VALUE "OFF")
   declare_option(REPOSITORY "jsoncpp" OPTION "JSONCPP_WITH_POST_BUILD_UNITTEST" VALUE "OFF")
   declare_option(REPOSITORY "jsoncpp" OPTION "JSONCPP_WITH_WARNING_AS_ERROR" VALUE "OFF")
@@ -47,7 +47,7 @@ if(COMPILE_JSONCPP)
                  GIT_TAG "${JSONCPP_TAG}"
                  FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
                  OPTIONS "${jsoncpp_OPTIONS}")
-                 
+
   if(jsoncpp_ADDED)
     get_option(VARIABLE "JSONCPP_SHARED" REPOSITORY "jsoncpp" OPTION "BUILD_SHARED_LIBS" )
     get_option(VARIABLE "JSONCPP_STATIC" REPOSITORY "jsoncpp" OPTION "BUILD_STATIC_LIBS" )
@@ -66,5 +66,5 @@ if(COMPILE_JSONCPP)
 
     target_include_directories(json_internal INTERFACE $<BUILD_INTERFACE:${jsoncpp_SOURCE_DIR}/include> INTERFACE $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
     add_library(jsoncpp::jsoncpp ALIAS json_internal)
-  endif()  
+  endif()
 endif()
