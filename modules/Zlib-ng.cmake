@@ -46,7 +46,10 @@ if(COMPILE_ZLIB)
   print_options(REPOSITORY  zlib-ng)
 
   unset(ZLIB_FOUND CACHE)
-  unset(ZLIB_FOUND PARENT_SCOPE)
+  get_directory_property(hasParent PARENT_DIRECTORY)
+  if(hasParent)
+    unset(ZLIB_FOUND PARENT_SCOPE)
+  endif()
   set(ZLIB_FOUND TRUE CACHE BOOL "" FORCE)
 
   CPMAddPackage(NAME zlib-ng
