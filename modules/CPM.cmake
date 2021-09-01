@@ -42,7 +42,7 @@ macro(cpm)
 endmacro()
 
 function(declare_option)
-  cmake_parse_arguments(OPTION "" "REPOSITORY;OPTION;VALUE" "" ${ARGN})
+  cmake_parse_arguments(OPTION "" "REPOSITORY;OPTION" "VALUE" ${ARGN})
   if(NOT DEFINED OPTION_REPOSITORY)
     message(FATAL_ERROR "REPOSITORY argument for declare_option is mandatory.")
   endif()
