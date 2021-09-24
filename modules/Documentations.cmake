@@ -3,7 +3,7 @@ include_guard(GLOBAL)
 find_package(Doxygen QUIET OPTIONAL_COMPONENTS mscgen dia dot)
 
 function(doxyfile_docs)
-  cmake_parse_arguments(ARGS "ALL;USE_STAMP_FILE;CONFIG_FILE" "WORKING_DIRECTORY;COMMENT" "" "${ARGN}")
+  cmake_parse_arguments(ARGS "ALL;USE_STAMP_FILE" "WORKING_DIRECTORY;COMMENT;CONFIG_FILE" "" "${ARGN}")
 
   if(NOT ARGS_COMMENT)
     set(ARGS_COMMENT "Generate API documentation with doxygen.")
@@ -66,7 +66,7 @@ function(doxyfile_docs)
     # an absolute path and if the project provided a relative path, we
     # treat it as relative to the current BINARY directory so that output
     # is not generated inside the source tree.
-    set(DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
+    set(DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/doxygen")
   elseif(NOT IS_ABSOLUTE "${DOXYGEN_OUTPUT_DIRECTORY}")
     get_filename_component(DOXYGEN_OUTPUT_DIRECTORY "${DOXYGEN_OUTPUT_DIRECTORY}" ABSOLUTE BASE_DIR "${CMAKE_CURRENT_BINARY_DIR}")
   endif()
@@ -263,7 +263,7 @@ function(doxyfile_docs)
   # doxygen_quote_value() below. This will mutate the string specifically for
   # consumption by Doxygen's config file, which we do not want when we use it
   # later in the custom target's commands.
-  set(ORIGINAL_DOXYGEN_OUTPUT_DIR  ${DOXYGEN_OUTPUT_DIRECTORY} )
+  set(ORIGINAL_DOXYGEN_OUTPUT_DIR  ${DOXYGEN_OUTPUT_DIRECTORY})
 
   foreach(_item IN LISTS _doxygen_quoted_options)
     doxygen_quote_value(DOXYGEN_${_item})
@@ -275,10 +275,18 @@ function(doxyfile_docs)
     else()
       set(CONFIG_FILE_TO_CONFIGURE "${CMAKE_BINARY_DIR}/CMakeDoxyfile.in")
     endif()
+  else()
+    set(CONFIG_FILE_TO_CONFIGURE "${ARGS_CONFIG_FILE}")
   endif()
 
   set(CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile")
-  configure_file(${CONFIG_FILE_TO_CONFIGURE} "${CONFIG_FILE}")
+  message("1111 ${CONFIG_FILE_TO_CONFIGURE}")
+  message("2222 ${CONFIG_FILE}")
+  configure_file("${CONFIG_FILE_TO_CONFIGURE}" "${CONFIG_FILE}")
+
+  if(ARGS_ALL)
+    set(ALL_STRING "ALL")
+  endif()
 
   if(DOXYGEN_FOUND)
     # Only create the stamp file if asked to. If we don't create it,
@@ -293,10 +301,10 @@ function(doxyfile_docs)
         WORKING_DIRECTORY "${ARGS_WORKING_DIRECTORY}"
         DEPENDS "${CONFIG_FILE}" ${_sources}
         COMMENT "${ARGS_COMMENT}")
-      add_custom_target(docs ${ARGS_ALL} DEPENDS ${STAMP_FILE} SOURCES ${_sources})
+      add_custom_target(docs ${ALL_STRING} DEPENDS ${STAMP_FILE} SOURCES ${_sources})
       unset(STAMP_FILE)
     else()
-      add_custom_target(docs ${ARGS_ALL} VERBATIM
+      add_custom_target(docs ${ALL_STRING} VERBATIM
         COMMAND ${CMAKE_COMMAND} -E make_directory ${ORIGINAL_DOXYGEN_OUTPUT_DIR}
         COMMAND "${DOXYGEN_EXECUTABLE}" "${CONFIG_FILE}"
         WORKING_DIRECTORY "${ARGS_WORKING_DIRECTORY}"
@@ -304,11 +312,8 @@ function(doxyfile_docs)
         COMMENT "${ARGS_COMMENT}"
         SOURCES ${_sources})
     endif()
+    install(DIRECTORY "${ORIGINAL_DOXYGEN_OUTPUT_DIR}/" DESTINATION "docs")
   else()
-    add_custom_target(docs ${ARGS_ALL} COMMAND ${CMAKE_COMMAND} -E echo "Doxygen is not found !!" COMMENT "${ARGS_COMMENT}" VERBATIM)
+    add_custom_target(docs ${ALL_STRING} COMMAND ${CMAKE_COMMAND} -E echo "Doxygen is not found !!" COMMENT "${ARGS_COMMENT}" VERBATIM)
   endif()
 endfunction()
-
-if(DOXYGEN_FOUND)
-  install(DIRECTORY "${DOXYGEN_OUTPUT_DIRECTORY}/" DESTINATION "docs")
-endif()
