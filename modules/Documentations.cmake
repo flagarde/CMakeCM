@@ -1,5 +1,9 @@
 include_guard(GLOBAL)
 
+cmake_policy(PUSH)
+cmake_policy(SET CMP0054 NEW) # quoted if arguments
+cmake_policy(SET CMP0057 NEW) # if IN_LIST
+
 find_package(Doxygen QUIET OPTIONAL_COMPONENTS mscgen dia dot)
 
 function(doxyfile_docs)
@@ -280,8 +284,6 @@ function(doxyfile_docs)
   endif()
 
   set(CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile")
-  message("1111 ${CONFIG_FILE_TO_CONFIGURE}")
-  message("2222 ${CONFIG_FILE}")
   configure_file("${CONFIG_FILE_TO_CONFIGURE}" "${CONFIG_FILE}")
 
   if(ARGS_ALL)
@@ -317,3 +319,5 @@ function(doxyfile_docs)
     add_custom_target(docs ${ALL_STRING} COMMAND ${CMAKE_COMMAND} -E echo "Doxygen is not found !!" COMMENT "${ARGS_COMMENT}" VERBATIM)
   endif()
 endfunction()
+
+cmake_policy(POP)
