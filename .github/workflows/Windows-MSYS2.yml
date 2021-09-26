@@ -3,7 +3,10 @@ name: 'Windows MSYS2'
 env:
   CMAKE_BUILD_TYPE: 'Release'
   CMAKE_BUILD_PREFIX: './build'
-  CMAKE_SOURCE_PREFIX: './tests'
+  CMAKE_SOURCE_PREFIX: '.'
+  BUILD_TESTS: YES
+  BUILD_DOCS: NO
+  BUILD_EXAMPLES: NO
 
 on:
   push:
@@ -22,7 +25,7 @@ jobs:
           - { icon: '🟦', sys: mingw64, env: x86_64, name: MINGW64 }
           - { icon: '🟩', sys: ucrt64,  env: ucrt-x86_64, name: UCRT64 }  # Experimental!
           - { icon: '🟥', sys: clang64, env: clang-x86_64, name: Clang64 } # Experimental!
-    name: '🧪${{ matrix.icon }} Test CMake ${{ matrix.cmake-version }} ${{ matrix.name }}'
+    name: '${{ matrix.icon }}🧪 Test CMake ${{ matrix.cmake-version }} ${{ matrix.name }}'
 
     steps:
     - name: '🧰 Checkout'
@@ -50,4 +53,4 @@ jobs:
           mingw-w64-${{matrix.env}}-cmake
 
     - name: '🧪 Run tests'
-      run: cmake -DBUILD_TESTS=ON -S ${{ env.CMAKE_SOURCE_PREFIX }} -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }} -Thost=x64
+      run: cmake -S ${{ env.CMAKE_SOURCE_PREFIX }} -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }} -D BUILD_TESTS=${{ env.BUILD_TESTS }} -D BUILD_DOCS=${{ env.BUILD_DOCS }} -D BUILD_EXAMPLES=${{ env.BUILD_EXAMPLES }} -Thost=x64

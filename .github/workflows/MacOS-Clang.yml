@@ -3,7 +3,10 @@ name: 'MacOS Clang'
 env:
   CMAKE_BUILD_TYPE: 'Release'
   CMAKE_BUILD_PREFIX: './build'
-  CMAKE_SOURCE_PREFIX: './tests'
+  CMAKE_SOURCE_PREFIX: '.'
+  BUILD_TESTS: YES
+  BUILD_DOCS: NO
+  BUILD_EXAMPLES: NO
 
 on:
   push:
@@ -16,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         cmake-version: ['3.16','3.17','3.18','3.19','3.20','3.21']
-    name: '🧪🟨 Test CMake ${{ matrix.cmake-version }} Clang'
+    name: '🟨🧪 Test CMake ${{ matrix.cmake-version }} Clang'
 
     steps:
     - name: '🧰 Checkout'
@@ -34,4 +37,4 @@ jobs:
       env:
         CC: ${{matrix.cc}}
         CXX: ${{matrix.cxx}}
-      run: cmake -DBUILD_TESTS=ON -S ${{ env.CMAKE_SOURCE_PREFIX }} -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }}
+      run: cmake -S ${{ env.CMAKE_SOURCE_PREFIX }} -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }} -D BUILD_TESTS=${{ env.BUILD_TESTS }} -D BUILD_DOCS=${{ env.BUILD_DOCS }} -D BUILD_EXAMPLES=${{ env.BUILD_EXAMPLES }}
