@@ -1,9 +1,9 @@
 name: 'Linux Clang'
 
 env:
-  CMAKE_VERSION: '3.16.x'
   CMAKE_BUILD_TYPE: 'Release'
   CMAKE_BUILD_PREFIX: './build'
+  CMAKE_SOURCE_PREFIX: './tests'
 
 on:
   push:
@@ -38,4 +38,4 @@ jobs:
       env:
         CC: ${{matrix.cc}}
         CXX: ${{matrix.cxx}}
-      run: cmake -DBUILD_TESTS=ON -S . -B build
+      run: cmake -DBUILD_TESTS=ON -S ${{ env.CMAKE_SOURCE_PREFIX }} -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }}
