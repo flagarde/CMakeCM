@@ -19,7 +19,12 @@ if(NOT pip_EXECUTABLE STREQUAL "pip-NOTFOUND")
     set_property(TARGET Pip::Pip PROPERTY IMPORTED_LOCATION "${pip_EXECUTABLE}")
   endif()
 endif()
-find_package_handle_standard_args(Pip REQUIRED_VARS pip_EXECUTABLE VERSION_VAR pip_VERSION HANDLE_VERSION_RANGE)
+
+if(CMAKE_VERSION VERSION_LESS "3.19")
+  find_package_handle_standard_args(Pip REQUIRED_VARS pip_EXECUTABLE VERSION_VAR pip_VERSION)
+else()
+  find_package_handle_standard_args(Pip REQUIRED_VARS pip_EXECUTABLE VERSION_VAR pip_VERSION HANDLE_VERSION_RANGE)
+endif()
 
 function(install_with_pip)
   cmake_parse_arguments(PIP "" "NAME" "OPTIONS" ${ARGN})
