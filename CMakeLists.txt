@@ -7,6 +7,7 @@ option(BUILD_DOCS "Build the docs." OFF)
 option(BUILD_EXAMPLES "Build the examples." OFF)
 
 if(BUILD_TESTS)
+  include(CTest)
   add_subdirectory(tests)
 endif()
 

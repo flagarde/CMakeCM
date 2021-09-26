@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10...3.19)
 
 project(CMakeCMTests VERSION 1 DESCRIPTION "Tests for CMakeCM" HOMEPAGE_URL "https://github.com/flagarde/CMakeCM" LANGUAGES NONE)
 
-enable_testing()
+include(CTest)
 
 file(GLOB to_configure  LIST_DIRECTORIES TRUE RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}/units/to_configure" "${CMAKE_CURRENT_SOURCE_DIR}/units/to_configure/*")
 
