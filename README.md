@@ -1,5 +1,4 @@
-# 📚 CMakeCM #
-![GitHub](https://img.shields.io/github/license/flagarde/CMakeCM) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/flagarde/CMakeCM) ![GitHub repo size](https://img.shields.io/github/repo-size/flagarde/CMakeCM)
+# 📚 CMakeCM  ![GitHub](https://img.shields.io/github/license/flagarde/CMakeCM) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/flagarde/CMakeCM) ![GitHub repo size](https://img.shields.io/github/repo-size/flagarde/CMakeCM)
 
 CMake Community Modules
 
