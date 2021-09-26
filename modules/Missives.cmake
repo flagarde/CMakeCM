@@ -1,9 +1,6 @@
 include_guard(GLOBAL)
 
-if(NOT CMAKECM_MESSAGES_MODULE_LOADED)
-  set(CMAKECM_MESSAGES_MODULE_LOADED "TRUE")
-
-  include(Colors)
+include(Colors)
 
   # CMake default message groups
   list(
@@ -180,4 +177,3 @@ if(NOT CMAKECM_MESSAGES_MODULE_LOADED)
     message_mode(NAME "TOREMOVE" PARENT_SCOPE "DEBUG" APPEND_BEGIN "-- " APPEND_END " --" APPEND_STYLE "Red" STYLE "Red")
     message_mode(NAME "TOADD" PARENT_SCOPE "DEBUG" APPEND_BEGIN "++ " APPEND_END " ++" APPEND_STYLE "Green" STYLE "Green")
   endif()
-endif()
