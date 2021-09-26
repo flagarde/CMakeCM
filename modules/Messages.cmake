@@ -126,7 +126,44 @@ if(NOT CMAKECM_MESSAGES_MODULE_LOADED)
   restore_to_default_all_modes()
 
   set(Default "\${Default}")
+  
+  function(missive)
+    if(${ARGC} STREQUAL "1")
+      string(REPLACE "\${Default}" "${Reset}" ARGV ${ARGV})
+      message("${ARGV}")
+      return()
+    endif()
 
+    list(GET ARGV 0 MESSAGE_MODE)
+    list(FIND MESSAGE_MODES ${MESSAGE_MODE} MESSAGE_MODE_FOUND)
+    if(NOT ${MESSAGE_MODE_FOUND} STREQUAL "-1")
+      list(REMOVE_AT ARGV 0)
+      list(JOIN ARGV ";" STRING_ARGV)
+      get_property(PARENT_MODE GLOBAL PROPERTY "${MESSAGE_MODE}_PARENT_MODE")
+      get_property(APPEND_BEGIN GLOBAL PROPERTY "${MESSAGE_MODE}_APPEND_BEGIN")
+      get_property(APPEND_END GLOBAL PROPERTY "${MESSAGE_MODE}_APPEND_END")
+      get_property(APPEND_STYLE_BEGIN GLOBAL PROPERTY "${MESSAGE_MODE}_APPEND_STYLE_BEGIN")
+      get_property(APPEND_STYLE_END GLOBAL PROPERTY "${MESSAGE_MODE}_APPEND_STYLE_END")
+      get_property(STYLE GLOBAL PROPERTY "${MESSAGE_MODE}_STYLE")
+      if(NOT STRING_ARGV STREQUAL "")
+        string(REPLACE "\${Default}" "${${STYLE}}" STRING_ARGV ${STRING_ARGV})
+      endif()
+      message(
+        ${PARENT_MODE}
+        ${${APPEND_STYLE_BEGIN}}
+        ${APPEND_BEGIN}
+        ${Reset}
+        ${${STYLE}}
+        ${STRING_ARGV}
+        ${Reset}
+        ${${APPEND_STYLE_END}}
+        ${APPEND_END}${Reset}
+        )
+    else()
+      message(${ARGV})
+    endif()
+  endfunction()
+  
   function(message)
     if(${ARGC} STREQUAL "1")
       string(REPLACE "\${Default}" "${Reset}" ARGV ${ARGV})
@@ -163,7 +200,7 @@ if(NOT CMAKECM_MESSAGES_MODULE_LOADED)
       _message(${ARGV})
     endif()
   endfunction()
-
+  
   if(NOT NOT_REDEFINE_CMAKE_MODES)
     message_mode(NAME "FATAL_ERROR" STYLE "Red")
     message_mode(NAME "SEND_ERROR" STYLE "Red")
