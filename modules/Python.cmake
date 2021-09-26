@@ -73,12 +73,12 @@ if(USE_SYSTEM_PYTHON)
       if(NOT Python3_Interpreter_FOUND AND NOT INTERPRETER EQUAL -1)
         set(INSTALL_PYTHON TRUE)
       endif()
-    
+
       list(FIND PYTHON_REQUIRED_COMPONENTS "Development" DEVELOPMENT)
       if(NOT Python3_Development_FOUND AND NOT DEVELOPMENT EQUAL -1)
         set(INSTALL_PYTHON_DEVELOPMENT TRUE)
       endif()
-  
+
       list(FIND PYTHON_REQUIRED_COMPONENTS "NumPy" NUMPY)
       if(NOT NUMPY EQUAL -1)
         set(INSTALL_NUMPY TRUE)
@@ -121,7 +121,7 @@ macro(download_python)
     set(PYTHON_URL "${PYTHON_URL}-x86_64-unknown-linux-gnu-pgo+lto-20210724T1424.tar.zst")
     set(PYTHON_SHA256 "8064db853bce9ab7afe5eafdf12fb2e1df7c39471f2cecdb1a9c84ae6a7a1793")
   endif()
-  message(NOTE "Dowloading python version ${PYTHON_VERSION} at ${PYTHON_URL}")
+  missive(NOTE "Dowloading python version ${PYTHON_VERSION} at ${PYTHON_URL}")
   file(DOWNLOAD "${PYTHON_URL}" "${CMAKE_CURRENT_BINARY_DIR}/python-${PYTHON_VERSION}.tar.zst" EXPECTED_HASH SHA256=${PYTHON_SHA256})
   execute_process(COMMAND "${CMAKE_COMMAND}" "-E" "tar" "xvz" "${CMAKE_BINARY_DIR}/python-${PYTHON_VERSION}.tar.zst" WORKING_DIRECTORY ${CMAKE_BINARY_DIR} OUTPUT_VARIABLE OUTPUT ERROR_VARIABLE ERROR RESULT_VARIABLE RESULT)
   unset_python_variables(FORCE)

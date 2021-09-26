@@ -1,6 +1,8 @@
 include_guard(GLOBAL)
 
-include(Python)
+if(Python3_FOUND)
+  include(Python)
+endif()
 
 include(FindPackageHandleStandardArgs)
 if(NOT "$ENV{VIRTUAL_ENV}" STREQUAL "")
