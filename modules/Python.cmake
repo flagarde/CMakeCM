@@ -1,5 +1,8 @@
 include_guard(GLOBAL)
 
+cmake_policy(PUSH)
+cmake_policy(SET CMP0074 NEW)
+
 include(Missives)
 
 if(NOT DEFINED PYTHON_VARIABLES_HAVE_BEEN_UNSET)
@@ -149,3 +152,5 @@ if(INSTALL_NUMPY)
 endif()
 
 find_package(Python3 ${PYTHON_VERSION} COMPONENTS ${PYTHON_REQUIRED_COMPONENTS} OPTIONAL_COMPONENTS ${PYTHON_OPTIONAL_COMPONENTS} REQUIRED)
+
+cmake_policy(POP)
