@@ -1,0 +1,41 @@
+name: 'Linux Clang'
+
+env:
+  CMAKE_VERSION: '3.16.x'
+  CMAKE_BUILD_TYPE: 'Release'
+  CMAKE_BUILD_PREFIX: './build'
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        cmake-version: ['3.16','3.17','3.18','3.19','3.20','3.21']
+        compiler: ['clang10','clang11']
+        include:
+          - { compiler: 'clang10', icon: '🟨', cc: clang-10, cxx: clang++-10, name: 'Clang 10' }
+          - { compiler: 'clang11', icon: '🟦', cc: clang-11, cxx: clang++-11, name: 'Clang 11' }
+    name: '🧪${{ matrix.icon }} Test CMake ${{ matrix.cmake-version }} ${{ matrix.name }}'
+
+    steps:
+    - name: '🧰 Checkout'
+      uses: actions/checkout@v2.3.4
+      with:
+        fetch-depth: 0
+
+    - name: '${{ matrix.icon }} Setup CMake'
+      uses: jwlawson/actions-setup-cmake@v1.11
+      with:
+        cmake-version: '${{ matrix.cmake-version }}.x'
+        github-api-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: '🧪 Run tests'
+      env:
+        CC: ${{matrix.cc}}
+        CXX: ${{matrix.cxx}}
+      run: cmake -DBUILD_TESTS=ON -S . -B build

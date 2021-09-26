@@ -1,0 +1,42 @@
+name: 'MacOS GCC'
+
+env:
+  CMAKE_VERSION: '3.16.x'
+  CMAKE_BUILD_TYPE: 'Release'
+  CMAKE_BUILD_PREFIX: './build'
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        cmake-version: ['3.16','3.17','3.18','3.19','3.20','3.21']
+        compiler: ['gcc9','gcc10','gcc11']
+        include:
+          - { compiler: 'gcc9', icon: '🟨', cc: gcc-9, cxx: g++-9, name: 'GCC 9' }
+          - { compiler: 'gcc10', icon: '🟦', cc: gcc-10, cxx: g++-10, name: 'GCC 10' }
+          - { compiler: 'gcc11', icon: '🟩', cc: gcc-11,  cxx: g++-11, name: 'GCC 11' }
+    name: '🧪${{ matrix.icon }} Test CMake ${{ matrix.cmake-version }} ${{ matrix.name }}'
+
+    steps:
+    - name: '🧰 Checkout'
+      uses: actions/checkout@v2.3.4
+      with:
+        fetch-depth: 0
+
+    - name: '${{ matrix.icon }} Setup CMake'
+      uses: jwlawson/actions-setup-cmake@v1.11
+      with:
+        cmake-version: '${{ matrix.cmake-version }}.x'
+        github-api-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: '🧪 Run tests'
+      env:
+        CC: ${{matrix.cc}}
+        CXX: ${{matrix.cxx}}
+      run: cmake -DBUILD_TESTS=ON -S . -B build
