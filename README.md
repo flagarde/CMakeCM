@@ -1,7 +1,31 @@
 # 📚 CMakeCM #
-![GitHub](https://img.shields.io/github/license/flagarde/CMakeCM) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/flagarde/CMakeCM) ![GitHub repo size](https://img.shields.io/github/repo-size/flagarde/CMakeCM) ![Tests Linux](https://github.com/flagarde/CMakeCM/workflows/Tests%20Linux/badge.svg) ![Tests MacOS](https://github.com/flagarde/CMakeCM/workflows/Tests%20MacOS/badge.svg) ![Tests Windows](https://github.com/flagarde/CMakeCM/workflows/Tests%20Windows/badge.svg)
+![GitHub](https://img.shields.io/github/license/flagarde/CMakeCM) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/flagarde/CMakeCM) ![GitHub repo size](https://img.shields.io/github/repo-size/flagarde/CMakeCM)
 
 CMake Community Modules
+
+[LC]: https://github.com/flagarde/CMakeCM/actions/workflows/Linux-Clang.yml
+[LCB]: https://github.com/flagarde/CMakeCM/actions/workflows/Linux-Clang.yml/badge.svg
+
+[LG]: https://github.com/flagarde/CMakeCM/actions/workflows/Linux-GCC.yml
+[LGB]: https://github.com/flagarde/CMakeCM/actions/workflows/Linux-GCC.yml/badge.svg
+
+[MC]: https://github.com/flagarde/CMakeCM/actions/workflows/MacOS-Clang.yml
+[MCB]: https://github.com/flagarde/CMakeCM/actions/workflows/MacOS-Clang.yml/badge.svg
+
+[MG]: https://github.com/flagarde/CMakeCM/actions/workflows/MacOS-GCC.yml
+[MGB]: https://github.com/flagarde/CMakeCM/actions/workflows/MacOS-GCC.yml/badge.svg
+
+[MS]: https://github.com/flagarde/CMakeCM/actions/workflows/Windows-MSYS2.yml
+[MSB]: https://github.com/flagarde/CMakeCM/actions/workflows/Windows-MSYS2.yml/badge.svg
+
+[MM]: https://github.com/flagarde/CMakeCM/actions/workflows/Windows-MSVC.yml
+[MMB]: https://github.com/flagarde/CMakeCM/actions/workflows/Windows-MSVC.yml/badge.svg
+
+## ⚙️ Builds
+|        | Linux Clang | Linux GCC | MacOS Clang | MacOS GCC | Windows M2sys | Windows MSVC |
+|--------|-------------|-----------|-------------|-----------|---------------|--------------|
+| Github |[![Linux Clang][LCB]][LC]|[![Linux GCC][LGB]][LG]|[![MacOS Clang][MCB]][MC]|[![MacOS GCC][MGB]][MG]|[![Windows MSYS2][MSB]][MS]|[![Windows MSVC][MMB]][MM]|
+
 
 ## ✨ Introduction
 This repository groups some usefull `CMake Modules` that can be share between different repositories.
