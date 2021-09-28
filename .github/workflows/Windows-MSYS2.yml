@@ -51,6 +51,7 @@ jobs:
           make
           mingw-w64-${{matrix.env}}-toolchain
           mingw-w64-${{matrix.env}}-cmake
+          mingw-w64-${{matrix.env}}-python
 
     - name: '🔧 Configure'
       run: cmake -S ${{ env.CMAKE_SOURCE_PREFIX }} -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }} -D BUILD_TESTS=${{ env.BUILD_TESTS }} -D BUILD_DOCS=${{ env.BUILD_DOCS }} -D BUILD_EXAMPLES=${{ env.BUILD_EXAMPLES }} -Thost=x64
