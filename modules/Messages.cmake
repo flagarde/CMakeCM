@@ -126,7 +126,7 @@ if(NOT CMAKECM_MESSAGES_MODULE_LOADED)
   restore_to_default_all_modes()
 
   set(Default "\${Default}")
-  
+
   function(missive)
     if(${ARGC} STREQUAL "1")
       string(REPLACE "\${Default}" "${Reset}" ARGV ${ARGV})
@@ -163,7 +163,7 @@ if(NOT CMAKECM_MESSAGES_MODULE_LOADED)
       message(${ARGV})
     endif()
   endfunction()
-  
+
   function(message)
     if(${ARGC} STREQUAL "1")
       string(REPLACE "\${Default}" "${Reset}" ARGV ${ARGV})
@@ -200,7 +200,7 @@ if(NOT CMAKECM_MESSAGES_MODULE_LOADED)
       _message(${ARGV})
     endif()
   endfunction()
-  
+
   if(NOT NOT_REDEFINE_CMAKE_MODES)
     message_mode(NAME "FATAL_ERROR" STYLE "Red")
     message_mode(NAME "SEND_ERROR" STYLE "Red")
