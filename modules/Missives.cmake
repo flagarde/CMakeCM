@@ -123,7 +123,7 @@ include(Colors)
   restore_to_default_all_modes()
 
   set(Default "\${Default}")
-  
+
   function(missive)
     if(${ARGC} STREQUAL "1")
       string(REPLACE "\${Default}" "${Reset}" ARGV ${ARGV})
@@ -160,7 +160,7 @@ include(Colors)
       message(${ARGV})
     endif()
   endfunction()
-  
+
   if(NOT NOT_REDEFINE_CMAKE_MODES)
     message_mode(NAME "FATAL_ERROR" STYLE "Red")
     message_mode(NAME "SEND_ERROR" STYLE "Red")
