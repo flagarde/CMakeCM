@@ -13,6 +13,11 @@ function(doxyfile_docs)
     set(ARGS_COMMENT "Generate API documentation with doxygen.")
   endif()
 
+  if(NOT DOXYGEN_FOUND)
+    add_custom_target(docs ${ALL_STRING} COMMAND ${CMAKE_COMMAND} -E echo "Doxygen is not found !!" COMMENT "${ARGS_COMMENT}" VERBATIM)
+    return()
+  endif()
+
   if(NOT ARGS_WORKING_DIRECTORY)
     set(ARGS_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
   endif()
@@ -290,34 +295,30 @@ function(doxyfile_docs)
     set(ALL_STRING "ALL")
   endif()
 
-  if(DOXYGEN_FOUND)
-    # Only create the stamp file if asked to. If we don't create it,
-    # the target will always be considered out-of-date.
-    if(ARGS_USE_STAMP_FILE)
-      set(STAMP_FILE "${CMAKE_CURRENT_BINARY_DIR}/${targetName}.stamp")
-      add_custom_command(
-        VERBATIM OUTPUT ${STAMP_FILE}
-        COMMAND ${CMAKE_COMMAND} -E make_directory ${ORIGINAL_DOXYGEN_OUTPUT_DIR}
-        COMMAND "${DOXYGEN_EXECUTABLE}" "${CONFIG_FILE}"
-        COMMAND ${CMAKE_COMMAND} -E touch ${STAMP_FILE}
-        WORKING_DIRECTORY "${ARGS_WORKING_DIRECTORY}"
-        DEPENDS "${CONFIG_FILE}" ${_sources}
-        COMMENT "${ARGS_COMMENT}")
-      add_custom_target(docs ${ALL_STRING} DEPENDS ${STAMP_FILE} SOURCES ${_sources})
-      unset(STAMP_FILE)
-    else()
-      add_custom_target(docs ${ALL_STRING} VERBATIM
-        COMMAND ${CMAKE_COMMAND} -E make_directory ${ORIGINAL_DOXYGEN_OUTPUT_DIR}
-        COMMAND "${DOXYGEN_EXECUTABLE}" "${CONFIG_FILE}"
-        WORKING_DIRECTORY "${ARGS_WORKING_DIRECTORY}"
-        DEPENDS "${CONFIG_FILE}" ${_sources}
-        COMMENT "${ARGS_COMMENT}"
-        SOURCES ${_sources})
-    endif()
-    install(DIRECTORY "${ORIGINAL_DOXYGEN_OUTPUT_DIR}/" DESTINATION "docs")
+  # Only create the stamp file if asked to. If we don't create it,
+  # the target will always be considered out-of-date.
+  if(ARGS_USE_STAMP_FILE)
+    set(STAMP_FILE "${CMAKE_CURRENT_BINARY_DIR}/${targetName}.stamp")
+    add_custom_command(
+      VERBATIM OUTPUT ${STAMP_FILE}
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${ORIGINAL_DOXYGEN_OUTPUT_DIR}
+      COMMAND "${DOXYGEN_EXECUTABLE}" "${CONFIG_FILE}"
+      COMMAND ${CMAKE_COMMAND} -E touch ${STAMP_FILE}
+      WORKING_DIRECTORY "${ARGS_WORKING_DIRECTORY}"
+      DEPENDS "${CONFIG_FILE}" ${_sources}
+      COMMENT "${ARGS_COMMENT}")
+    add_custom_target(docs ${ALL_STRING} DEPENDS ${STAMP_FILE} SOURCES ${_sources})
+    unset(STAMP_FILE)
   else()
-    add_custom_target(docs ${ALL_STRING} COMMAND ${CMAKE_COMMAND} -E echo "Doxygen is not found !!" COMMENT "${ARGS_COMMENT}" VERBATIM)
+    add_custom_target(docs ${ALL_STRING} VERBATIM
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${ORIGINAL_DOXYGEN_OUTPUT_DIR}
+      COMMAND "${DOXYGEN_EXECUTABLE}" "${CONFIG_FILE}"
+      WORKING_DIRECTORY "${ARGS_WORKING_DIRECTORY}"
+      DEPENDS "${CONFIG_FILE}" ${_sources}
+      COMMENT "${ARGS_COMMENT}"
+      SOURCES ${_sources})
   endif()
+  install(DIRECTORY "${ORIGINAL_DOXYGEN_OUTPUT_DIR}/" DESTINATION "docs")
 endfunction()
 
 cmake_policy(POP)
