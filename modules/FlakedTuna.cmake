@@ -4,7 +4,7 @@ include(CPM)
 cpm()
 
 if(NOT DEFINED FLAKEDTUNA_TAG)
-  set(FLAKEDTUNA_TAG "v1.0")
+  set(FLAKEDTUNA_TAG "v1.1")
 endif()
 
 if(NOT DEFINED FLAKEDTUNA_REPOSITORY)
