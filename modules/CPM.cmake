@@ -17,6 +17,10 @@ if(DEFINED CPM_FORCE_VERSION)
   set(CPM_DEFAULT_VERSION "${CPM_FORCE_VERSION}")
 endif()
 
+if(NOT DEFINED CPM_URL)
+  set(CPM_URL https://github.com/cpm-cmake/CPM.cmake/releases/download/v${CPM_DEFAULT_VERSION}/CPM.cmake)
+endif()
+
 macro(cpm)
   include(FetchContent)
   include(Ping)
@@ -32,7 +36,7 @@ macro(cpm)
   set(CPM_DOWNLOAD_LOCATION "${CMAKE_BINARY_DIR}/Modules/CPM_${CPM_VER}.cmake")
   if(NOT EXISTS "${CPM_DOWNLOAD_LOCATION}")
     message(NOTE "Downloading CPM to ${CPM_DOWNLOAD_LOCATION}")
-    file(DOWNLOAD "https://gitlab.com/ExternalRepositories/CPM.cmake/-/raw/v${CPM_VER}/cmake/CPM.cmake" "${CPM_DOWNLOAD_LOCATION}")
+    file(DOWNLOAD "${CPM_URL}" "${CPM_DOWNLOAD_LOCATION}")
   endif()
 
   #Make CPm looks a bit like CMMM
