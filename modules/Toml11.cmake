@@ -8,7 +8,7 @@ if(NOT DEFINED TOML11_REPOSITORY)
 endif()
 
 if(NOT DEFINED TOML11_TAG)
-  set(TOML11_TAG "master")
+  set(TOML11_TAG "v3.7.0")
 endif()
 
 declare_option(REPOSITORY toml11 OPTION toml11_BUILD_TEST VALUE OFF)
