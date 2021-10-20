@@ -8,7 +8,7 @@ if(NOT DEFINED IXWEBSOCKET_REPOSITORY)
 endif()
 
 if(NOT DEFINED IXWEBSOCKET_TAG)
-  set(IXWEBSOCKET_TAG "master")
+  set(IXWEBSOCKET_TAG "v11.0.8")
 endif()
 
 include(Zlib-ng)
@@ -27,7 +27,3 @@ CPMAddPackage(NAME IXWebSocket
               GIT_TAG ${IXWEBSOCKET_TAG}
               FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
               OPTIONS "${IXWebSocket_OPTIONS}")
-
-if(IXWebSocket_ADDED)
-  add_library(ixwebsocket::ixwebsocket ALIAS ixwebsocket)
-endif()
