@@ -4,7 +4,7 @@ include(CPM)
 cpm()
 
 if(NOT DEFINED NLOHMANN_REPOSITORY)
-    set(NLOHMANN_REPOSITORY "https://github.com/nlohmann/json.git")
+    set(NLOHMANN_REPOSITORY "https://github.com/external-packages/nlohmann_json_cmake_fetchcontent.git")
 endif()
 
 if(NOT DEFINED NLOHMANN_TAG)
