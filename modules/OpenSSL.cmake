@@ -1,5 +1,7 @@
 include_guard(GLOBAL)
 
+include(GNUInstallDirs)
+
 include(Messages)
 
 if(NOT DEFINED OPENSSLCMAKE_REPOSITORY)
