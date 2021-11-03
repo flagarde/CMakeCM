@@ -336,7 +336,7 @@ function(doxyfile_docs)
     add_custom_command(
             VERBATIM OUTPUT ${STAMP_FILE} ${DOXYGEN_INPUT_LATEX}
             COMMAND ${CMAKE_COMMAND} -E make_directory ${ORIGINAL_DOXYGEN_OUTPUT_DIR}
-            COMMAND "${DOXYGEN_EXECUTABLE}" -q "${CONFIG_FILE}"
+            COMMAND "${DOXYGEN_EXECUTABLE}" "${CONFIG_FILE}"
             COMMAND ${CMAKE_COMMAND} -E touch ${STAMP_FILE}
             WORKING_DIRECTORY "${ARGS_WORKING_DIRECTORY}"
             DEPENDS "${CONFIG_FILE}" ${_sources}
@@ -344,7 +344,7 @@ function(doxyfile_docs)
   else()
     add_custom_target(generate-doxygen ${ALL_STRING} VERBATIM
             COMMAND ${CMAKE_COMMAND} -E make_directory ${ORIGINAL_DOXYGEN_OUTPUT_DIR}
-            COMMAND "${DOXYGEN_EXECUTABLE}" -q "${CONFIG_FILE}"
+            COMMAND "${DOXYGEN_EXECUTABLE}" "${CONFIG_FILE}"
             WORKING_DIRECTORY "${ARGS_WORKING_DIRECTORY}"
             DEPENDS "${CONFIG_FILE}" ${_sources}
             COMMENT "${ARGS_COMMENT}"
