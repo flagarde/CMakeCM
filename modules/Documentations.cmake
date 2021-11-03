@@ -9,12 +9,12 @@ find_package(Doxygen QUIET OPTIONAL_COMPONENTS mscgen dia dot)
 function(doxyfile_docs)
   cmake_parse_arguments(ARGS "ALL;USE_STAMP_FILE" "WORKING_DIRECTORY;COMMENT;CONFIG_FILE" "" "${ARGN}")
 
-  if(NOT ARGS_COMMENT)
-    set(ARGS_COMMENT "Generate API documentation with doxygen.")
-  endif()
+  set(DOXYGEN_ALL_TARGETS "")
 
   if(NOT DOXYGEN_FOUND)
-    add_custom_target(docs ${ALL_STRING} COMMAND ${CMAKE_COMMAND} -E echo "Doxygen is not found !!" COMMENT "${ARGS_COMMENT}" VERBATIM)
+    add_custom_target(docs ${ALL_STRING} "${CMAKE_COMMAND}" -E true COMMENT "${Yellow}Doxygen is not found !!${Reset}")
+    add_custom_target(doc-html ${ALL_STRING} "${CMAKE_COMMAND}" -E true COMMENT "${Yellow}Doxygen is not found !!${Reset}")
+    add_custom_target(doc-latex ${ALL_STRING} "${CMAKE_COMMAND}" -E true COMMENT "${Yellow}Doxygen is not found !!${Reset}")
     return()
   endif()
 
@@ -91,7 +91,7 @@ function(doxyfile_docs)
     # and Lucent Bell Labs. The other options in this section have no
     # effect if this option is set to NO.
     # Doxygen's default value is: NO.
-    if(Doxygen_dot_FOUND)
+    if(DOXYGEN_HAVE_DOT)
       set(DOXYGEN_HAVE_DOT "YES")
     else()
       set(DOXYGEN_HAVE_DOT "NO")
@@ -108,11 +108,25 @@ function(doxyfile_docs)
     set(DOXYGEN_DOT_MULTI_TARGETS YES)
   endif()
 
-  if(NOT DEFINED DOXYGEN_GENERATE_LATEX)
+  if(NOT DEFINED DOXYGEN_GENERATE_LATEX OR NOT DOXYGEN_GENERATE_LATEX)
     # If the GENERATE_LATEX tag is set to YES, doxygen will generate LaTeX
     # output. We only want the HTML output enabled by default, so we turn
     # this off if the project hasn't specified it.
     set(DOXYGEN_GENERATE_LATEX NO)
+  else()
+    find_package(LATEX OPTIONAL_COMPONENTS PDFLATEX XELATEX LUALATEX BIBTEX BIBER MAKEINDEX XINDY DVIPS DVIPDF PS2PDF PDFTOPS LATEX2HTML HTLATEX)
+    if(LATEX_PDFLATEX_FOUND)
+      set(LATEX_GENERATED_EXTENSION "pdf")
+      set(LATEX_EXECUTABLE ${PDFLATEX_COMPILER})
+      set(DOXYGEN_GENERATE_LATEX YES)
+    elseif(LATEX_FOUND)
+      set(LATEX_GENERATED_EXTENSION "dvi")
+      set(LATEX_EXECUTABLE ${LATEX_COMPILER})
+      set(DOXYGEN_GENERATE_LATEX YES)
+    else()
+      set(DOXYGEN_GENERATE_LATEX NO)
+      message(WARN "DOXYGEN_GENERATE_LATEX is set to ON but latex compilers are not found ! Disabling the pdf generation !")
+    endif()
   endif()
 
   if(NOT DEFINED DOXYGEN_WARN_FORMAT)
@@ -148,6 +162,10 @@ function(doxyfile_docs)
   # already set and we have not provided above
   include("${CMAKE_BINARY_DIR}/CMakeDoxygenDefaults.cmake" OPTIONAL)
 
+  if(NOT ARGS_COMMENT)
+    set(ARGS_COMMENT "Generating API documentation with doxygen.")
+  endif()
+
   # Cleanup built HTMLs on "make clean"
   # TODO Any other dirs?
   if(DOXYGEN_GENERATE_HTML)
@@ -157,6 +175,17 @@ function(doxyfile_docs)
       set(_args_clean_html_dir "${DOXYGEN_OUTPUT_DIRECTORY}/${DOXYGEN_HTML_OUTPUT}")
     endif()
     set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_CLEAN_FILES "${_args_clean_html_dir}")
+  endif()
+
+  # Cleanup built HTMLs on "make clean"
+  # TODO Any other dirs?
+  if(DOXYGEN_GENERATE_LATEX)
+    if(IS_ABSOLUTE "${DOXYGEN_LATEX_OUTPUT}")
+      set(_args_clean_latex_dir "${DOXYGEN_LATEX_OUTPUT}")
+    else()
+      set(_args_clean_latex_dir "${DOXYGEN_OUTPUT_DIRECTORY}/${DOXYGEN_LATEX_OUTPUT}")
+    endif()
+    set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_CLEAN_FILES "${_args_clean_latex_dir}")
   endif()
 
   # Build up a list of files we can identify from the inputs so we can list
@@ -180,44 +209,44 @@ function(doxyfile_docs)
 
   # Transform known list type options into space separated strings.
   set(_doxygen_list_options
-    ABBREVIATE_BRIEF
-    ALIASES
-    CITE_BIB_FILES
-    DIAFILE_DIRS
-    DOTFILE_DIRS
-    DOT_FONTPATH
-    ENABLED_SECTIONS
-    EXAMPLE_PATH
-    EXAMPLE_PATTERNS
-    EXCLUDE
-    EXCLUDE_PATTERNS
-    EXCLUDE_SYMBOLS
-    EXPAND_AS_DEFINED
-    EXTENSION_MAPPING
-    EXTRA_PACKAGES
-    EXTRA_SEARCH_MAPPINGS
-    FILE_PATTERNS
-    FILTER_PATTERNS
-    FILTER_SOURCE_PATTERNS
-    HTML_EXTRA_FILES
-    HTML_EXTRA_STYLESHEET
-    IGNORE_PREFIX
-    IMAGE_PATH
-    INCLUDE_FILE_PATTERNS
-    INCLUDE_PATH
-    INPUT
-    LATEX_EXTRA_FILES
-    LATEX_EXTRA_STYLESHEET
-    MATHJAX_EXTENSIONS
-    MSCFILE_DIRS
-    PLANTUML_INCLUDE_PATH
-    PREDEFINED
-    QHP_CUST_FILTER_ATTRS
-    QHP_SECT_FILTER_ATTRS
-    STRIP_FROM_INC_PATH
-    STRIP_FROM_PATH
-    TAGFILES
-    TCL_SUBST)
+          ABBREVIATE_BRIEF
+          ALIASES
+          CITE_BIB_FILES
+          DIAFILE_DIRS
+          DOTFILE_DIRS
+          DOT_FONTPATH
+          ENABLED_SECTIONS
+          EXAMPLE_PATH
+          EXAMPLE_PATTERNS
+          EXCLUDE
+          EXCLUDE_PATTERNS
+          EXCLUDE_SYMBOLS
+          EXPAND_AS_DEFINED
+          EXTENSION_MAPPING
+          EXTRA_PACKAGES
+          EXTRA_SEARCH_MAPPINGS
+          FILE_PATTERNS
+          FILTER_PATTERNS
+          FILTER_SOURCE_PATTERNS
+          HTML_EXTRA_FILES
+          HTML_EXTRA_STYLESHEET
+          IGNORE_PREFIX
+          IMAGE_PATH
+          INCLUDE_FILE_PATTERNS
+          INCLUDE_PATH
+          INPUT
+          LATEX_EXTRA_FILES
+          LATEX_EXTRA_STYLESHEET
+          MATHJAX_EXTENSIONS
+          MSCFILE_DIRS
+          PLANTUML_INCLUDE_PATH
+          PREDEFINED
+          QHP_CUST_FILTER_ATTRS
+          QHP_SECT_FILTER_ATTRS
+          STRIP_FROM_INC_PATH
+          STRIP_FROM_PATH
+          TAGFILES
+          TCL_SUBST)
   foreach(_item IN LISTS _doxygen_list_options)
     doxygen_list_to_quoted_strings(DOXYGEN_${_item})
   endforeach()
@@ -225,48 +254,48 @@ function(doxyfile_docs)
   # Transform known single value variables which may contain spaces, such as
   # paths or description strings.
   set(_doxygen_quoted_options
-    CHM_FILE
-    DIA_PATH
-    DOCBOOK_OUTPUT
-    DOCSET_FEEDNAME
-    DOCSET_PUBLISHER_NAME
-    DOT_FONTNAME
-    DOT_PATH
-    EXTERNAL_SEARCH_ID
-    FILE_VERSION_FILTER
-    GENERATE_TAGFILE
-    HHC_LOCATION
-    HTML_FOOTER
-    HTML_HEADER
-    HTML_OUTPUT
-    HTML_STYLESHEET
-    INPUT_FILTER
-    LATEX_FOOTER
-    LATEX_HEADER
-    LATEX_OUTPUT
-    LAYOUT_FILE
-    MAN_OUTPUT
-    MAN_SUBDIR
-    MATHJAX_CODEFILE
-    MSCGEN_PATH
-    OUTPUT_DIRECTORY
-    PERL_PATH
-    PLANTUML_JAR_PATH
-    PROJECT_BRIEF
-    PROJECT_LOGO
-    PROJECT_NAME
-    QCH_FILE
-    QHG_LOCATION
-    QHP_CUST_FILTER_NAME
-    QHP_VIRTUAL_FOLDER
-    RTF_EXTENSIONS_FILE
-    RTF_OUTPUT
-    RTF_STYLESHEET_FILE
-    SEARCHDATA_FILE
-    USE_MDFILE_AS_MAINPAGE
-    WARN_FORMAT
-    WARN_LOGFILE
-    XML_OUTPUT)
+          CHM_FILE
+          DIA_PATH
+          DOCBOOK_OUTPUT
+          DOCSET_FEEDNAME
+          DOCSET_PUBLISHER_NAME
+          DOT_FONTNAME
+          DOT_PATH
+          EXTERNAL_SEARCH_ID
+          FILE_VERSION_FILTER
+          GENERATE_TAGFILE
+          HHC_LOCATION
+          HTML_FOOTER
+          HTML_HEADER
+          HTML_OUTPUT
+          HTML_STYLESHEET
+          INPUT_FILTER
+          LATEX_FOOTER
+          LATEX_HEADER
+          LATEX_OUTPUT
+          LAYOUT_FILE
+          MAN_OUTPUT
+          MAN_SUBDIR
+          MATHJAX_CODEFILE
+          MSCGEN_PATH
+          OUTPUT_DIRECTORY
+          PERL_PATH
+          PLANTUML_JAR_PATH
+          PROJECT_BRIEF
+          PROJECT_LOGO
+          PROJECT_NAME
+          QCH_FILE
+          QHG_LOCATION
+          QHP_CUST_FILTER_NAME
+          QHP_VIRTUAL_FOLDER
+          RTF_EXTENSIONS_FILE
+          RTF_OUTPUT
+          RTF_STYLESHEET_FILE
+          SEARCHDATA_FILE
+          USE_MDFILE_AS_MAINPAGE
+          WARN_FORMAT
+          WARN_LOGFILE
+          XML_OUTPUT)
 
   # Store the unmodified value of DOXYGEN_OUTPUT_DIRECTORY prior to invoking
   # doxygen_quote_value() below. This will mutate the string specifically for
@@ -295,30 +324,77 @@ function(doxyfile_docs)
     set(ALL_STRING "ALL")
   endif()
 
+  if(DOXYGEN_GENERATE_LATEX)
+    set(DOXYGEN_INPUT_LATEX "${ORIGINAL_DOXYGEN_OUTPUT_DIR}/${DOXYGEN_LATEX_OUTPUT}/refman.tex")
+    set(DOXYGEN_OUTPUT_LATEX "${ORIGINAL_DOXYGEN_OUTPUT_DIR}/${DOXYGEN_LATEX_OUTPUT}/refman.${LATEX_GENERATED_EXTENSION}")
+  endif()
+
   # Only create the stamp file if asked to. If we don't create it,
   # the target will always be considered out-of-date.
   if(ARGS_USE_STAMP_FILE)
-    set(STAMP_FILE "${CMAKE_CURRENT_BINARY_DIR}/${targetName}.stamp")
+    set(STAMP_FILE "${CMAKE_CURRENT_BINARY_DIR}/doxygen.stamp")
     add_custom_command(
-      VERBATIM OUTPUT ${STAMP_FILE}
-      COMMAND ${CMAKE_COMMAND} -E make_directory ${ORIGINAL_DOXYGEN_OUTPUT_DIR}
-      COMMAND "${DOXYGEN_EXECUTABLE}" "${CONFIG_FILE}"
-      COMMAND ${CMAKE_COMMAND} -E touch ${STAMP_FILE}
-      WORKING_DIRECTORY "${ARGS_WORKING_DIRECTORY}"
-      DEPENDS "${CONFIG_FILE}" ${_sources}
-      COMMENT "${ARGS_COMMENT}")
-    add_custom_target(docs ${ALL_STRING} DEPENDS ${STAMP_FILE} SOURCES ${_sources})
-    unset(STAMP_FILE)
+            VERBATIM OUTPUT ${STAMP_FILE} ${DOXYGEN_INPUT_LATEX}
+            COMMAND ${CMAKE_COMMAND} -E make_directory ${ORIGINAL_DOXYGEN_OUTPUT_DIR}
+            COMMAND "${DOXYGEN_EXECUTABLE}" -q "${CONFIG_FILE}"
+            COMMAND ${CMAKE_COMMAND} -E touch ${STAMP_FILE}
+            WORKING_DIRECTORY "${ARGS_WORKING_DIRECTORY}"
+            DEPENDS "${CONFIG_FILE}" ${_sources}
+            COMMENT "${ARGS_COMMENT}")
   else()
-    add_custom_target(docs ${ALL_STRING} VERBATIM
-      COMMAND ${CMAKE_COMMAND} -E make_directory ${ORIGINAL_DOXYGEN_OUTPUT_DIR}
-      COMMAND "${DOXYGEN_EXECUTABLE}" "${CONFIG_FILE}"
-      WORKING_DIRECTORY "${ARGS_WORKING_DIRECTORY}"
-      DEPENDS "${CONFIG_FILE}" ${_sources}
-      COMMENT "${ARGS_COMMENT}"
-      SOURCES ${_sources})
+    add_custom_target(generate-doxygen ${ALL_STRING} VERBATIM
+            COMMAND ${CMAKE_COMMAND} -E make_directory ${ORIGINAL_DOXYGEN_OUTPUT_DIR}
+            COMMAND "${DOXYGEN_EXECUTABLE}" -q "${CONFIG_FILE}"
+            WORKING_DIRECTORY "${ARGS_WORKING_DIRECTORY}"
+            DEPENDS "${CONFIG_FILE}" ${_sources}
+            COMMENT "${ARGS_COMMENT}"
+            SOURCES ${_sources})
   endif()
-  install(DIRECTORY "${ORIGINAL_DOXYGEN_OUTPUT_DIR}/" DESTINATION "docs")
+
+  if(DOXYGEN_GENERATE_HTML)
+    list(APPEND DOXYGEN_ALL_TARGETS "doc-html")
+    if(ARGS_USE_STAMP_FILE)
+      add_custom_target(doc-html ${ALL_STRING} DEPENDS ${STAMP_FILE} SOURCES ${_sources} COMMENT "Generating html documentation.")
+    else()
+      add_custom_target(doc-html ${ALL_STRING} DEPENDS generate-doxygen SOURCES ${_sources} COMMENT "Generating html documentation.")
+    endif()
+    install(DIRECTORY "${ORIGINAL_DOXYGEN_OUTPUT_DIR}/html" DESTINATION "docs" OPTIONAL)
+  else()
+    add_custom_target(doc-html "${CMAKE_COMMAND}" -E true COMMENT "${Yellow}HTML format not activated for doxygen !${Reset}")
+  endif()
+
+  if(DOXYGEN_GENERATE_LATEX)
+    list(APPEND DOXYGEN_ALL_TARGETS "doc-latex")
+    if(ARGS_USE_STAMP_FILE)
+      #-interaction=batchmode
+      add_custom_target(doc-latex ${ALL_STRING} DEPENDS "${STAMP_FILE}" SOURCES ${_sources}
+              COMMAND "${LATEX_EXECUTABLE}" -draftmode "${DOXYGEN_INPUT_LATEX}"
+              COMMAND "${LATEX_EXECUTABLE}" "${DOXYGEN_INPUT_LATEX}"
+              WORKING_DIRECTORY "${ORIGINAL_DOXYGEN_OUTPUT_DIR}/${DOXYGEN_LATEX_OUTPUT}"
+              BYPRODUCTS "${DOXYGEN_OUTPUT_LATEX}"
+              COMMENT "Generating LaTeX documentation.")
+    else()
+      add_custom_target(doc-latex ${ALL_STRING} DEPENDS generate-doxygen SOURCES ${_sources}
+              COMMAND "${LATEX_EXECUTABLE}" -draftmode "${DOXYGEN_INPUT_LATEX}"
+              COMMAND "${LATEX_EXECUTABLE}" "${DOXYGEN_INPUT_LATEX}"
+              WORKING_DIRECTORY "${ORIGINAL_DOXYGEN_OUTPUT_DIR}/${DOXYGEN_LATEX_OUTPUT}"
+              BYPRODUCTS "${DOXYGEN_OUTPUT_LATEX}"
+              COMMENT "Generating LaTeX documentation.")
+    endif()
+    install(FILES "${DOXYGEN_OUTPUT_LATEX}" DESTINATION "docs" RENAME "${PROJECT_NAME}_Manual.pdf" OPTIONAL)
+  else()
+    add_custom_target(doc-latex "${CMAKE_COMMAND}" -E true COMMENT "${Yellow}LaTeX format not activated for doxygen !${Reset}")
+  endif()
+
+  string(REGEX REPLACE ";" " " DOXYGEN_ALL_TARGETS_NAMES "${DOXYGEN_ALL_TARGETS}")
+  list(LENGTH DOXYGEN_ALL_TARGETS_NAMES DOXYGEN_ALL_TARGETS_NAMES_LENGTH)
+  if(NOT ${DOXYGEN_ALL_TARGETS_NAMES_LENGTH} EQUAL 0)
+    set(DOCS_TARGET_COMMENT "Generating the docs ( formats: ${DOXYGEN_ALL_TARGETS_NAMES} ).")
+  else()
+    set(DOCS_TARGET_COMMENT "${Yellow}No formats activated to Doxygen !${Reset}")
+  endif()
+  add_custom_target(docs ${ALL_STRING} DEPENDS "${DOXYGEN_ALL_TARGETS}" COMMENT "${DOCS_TARGET_COMMENT}")
+
 endfunction()
 
 cmake_policy(POP)
