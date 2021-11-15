@@ -1,5 +1,7 @@
 include_guard(GLOBAL)
 
+include(Missives)
+
 cmake_policy(PUSH)
 cmake_policy(SET CMP0054 NEW) # quoted if arguments
 cmake_policy(SET CMP0057 NEW) # if IN_LIST
@@ -23,7 +25,7 @@ function(doxyfile_docs)
   endif()
 
   if(DEFINED DOXYGEN_INPUT)
-    message(WARNING "DOXYGEN_INPUT is set but it will be ignored. Pass the files and directories directly to the doxygen_add_docs() command instead.")
+    missive(WARN "DOXYGEN_INPUT is set but it will be ignored. Pass the files and directories directly to the doxygen_add_docs() command instead.")
   endif()
   set(DOXYGEN_INPUT "${ARGS_UNPARSED_ARGUMENTS}")
 
@@ -125,7 +127,7 @@ function(doxyfile_docs)
       set(DOXYGEN_GENERATE_LATEX YES)
     else()
       set(DOXYGEN_GENERATE_LATEX NO)
-      message(WARN "DOXYGEN_GENERATE_LATEX is set to ON but latex compilers are not found ! Disabling the pdf generation !")
+      missive(WARN "DOXYGEN_GENERATE_LATEX is set to ON but latex compilers are not found ! Disabling the pdf generation !")
     endif()
   endif()
 

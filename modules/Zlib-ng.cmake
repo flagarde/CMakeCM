@@ -1,6 +1,6 @@
 include_guard(GLOBAL)
 
-include(Messages)
+include(Missives)
 
 if(NOT DEFINED ZLIB-NG_TAG)
   set(ZLIB-NG_TAG "2.0.5")
@@ -17,11 +17,11 @@ if(${USE_SYSTEM_ZLIB})
     set(COMPILE_ZLIB FALSE)
   else()
     set(COMPILE_ZLIB TRUE)
-    message(NOTE "Zlib not found ! Zlib will be compiled using ${ZLIB-NG_REPOSITORY} version ${ZLIB-NG_VERSION} !")
+    missive(NOTE "Zlib not found ! Zlib will be compiled using ${ZLIB-NG_REPOSITORY} version ${ZLIB-NG_VERSION} !")
   endif()
 else()
   set(COMPILE_ZLIB TRUE)
-  message(NOTE "Zlib will be compiled using ${ZLIB-NG_REPOSITORY} version ${ZLIB-NG_VERSION}.")
+  missive(NOTE "Zlib will be compiled using ${ZLIB-NG_REPOSITORY} version ${ZLIB-NG_VERSION}.")
 endif()
 
 

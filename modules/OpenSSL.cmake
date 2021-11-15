@@ -1,8 +1,7 @@
 include_guard(GLOBAL)
 
 include(GNUInstallDirs)
-
-include(Messages)
+include(Missives)
 
 if(NOT DEFINED OPENSSLCMAKE_REPOSITORY)
   set(OPENSSLCMAKE_REPOSITORY "https://github.com/flagarde/openssl-cmake.git")
@@ -19,11 +18,11 @@ if(${USE_SYSTEM_OPENSSL})
     set(COMPILE_OPENSSL FALSE)
   else()
     set(COMPILE_OPENSSL TRUE)
-    message(NOTE "OpenSSL not found ! OpenSSL will be compiled using ${OPENSSLCMAKE_REPOSITORY} version ${OPENSSLCMAKE_VERSION} !")
+    missive(NOTE "OpenSSL not found ! OpenSSL will be compiled using ${OPENSSLCMAKE_REPOSITORY} version ${OPENSSLCMAKE_VERSION} !")
   endif()
 else()
   set(COMPILE_OPENSSL TRUE)
-  message(NOTE "OpenSSL will be compiled using ${OPENSSLCMAKE_REPOSITORY} version ${OPENSSLCMAKE_VERSION}.")
+  missive(NOTE "OpenSSL will be compiled using ${OPENSSLCMAKE_REPOSITORY} version ${OPENSSLCMAKE_VERSION}.")
 endif()
 
 if(COMPILE_OPENSSL)

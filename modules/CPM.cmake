@@ -1,6 +1,7 @@
 include_guard(GLOBAL)
 
 include(GNUInstallDirs)
+include(Missives)
 
 # https://cmake.org/cmake/help/latest/policy/CMP0097.html
 if(POLICY CMP0097)
@@ -24,7 +25,7 @@ endif()
 macro(cpm)
   include(FetchContent)
   include(Ping)
-  include(Messages)
+  include(Missives)
 
   cmake_parse_arguments(ARG "" "VERSION" "" "${ARGN}")
   if(NOT DEFINED ARG_VERSION)
@@ -35,7 +36,7 @@ macro(cpm)
 
   set(CPM_DOWNLOAD_LOCATION "${CMAKE_BINARY_DIR}/Modules/CPM_${CPM_VER}.cmake")
   if(NOT EXISTS "${CPM_DOWNLOAD_LOCATION}")
-    message(NOTE "Downloading CPM to ${CPM_DOWNLOAD_LOCATION}")
+    missive(NOTE "Downloading CPM to ${CPM_DOWNLOAD_LOCATION}")
     file(DOWNLOAD "${CPM_URL}" "${CPM_DOWNLOAD_LOCATION}")
   endif()
 
@@ -95,7 +96,7 @@ function(print_options)
   endif()
   list(LENGTH ${OPTION_REPOSITORY}_OPTIONS_LIST EMPTY)
   if(${EMPTY} STREQUAL 0)
-    message(WARN "${OPTION_REPOSITORY} doesn't have options")
+    missive(WARN "${OPTION_REPOSITORY} doesn't have options")
     return()
   endif()
   string(APPEND RESULT "Options for ${OPTION_REPOSITORY} :${Reset}\n")
@@ -114,7 +115,7 @@ function(print_options)
     endif()
     math(EXPR ITEM "${ITEM}+1")
   endforeach()
-  message(INFO "${RESULT}")
+  missive(INFO "${RESULT}")
 endfunction()
 
 function(get_option)
