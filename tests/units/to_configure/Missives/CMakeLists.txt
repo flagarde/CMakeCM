@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(MessagesTest
+project(MissivesTest
         VERSION "1"
         DESCRIPTION "Missives Test"
         HOMEPAGE_URL "https://github.com/flagarde/CMakeCM/blob/master/modules/Missives.cmake"
