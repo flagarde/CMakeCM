@@ -27,7 +27,7 @@ CMake Community Modules
 
 
 ## ✨ Introduction
-This repository groups some usefull `CMake Modules` that can be share between different repositories.
+This repository groups some useful `CMake Modules` that can be share between different repositories.
 
 ## 📝 Create a Modules List
 
@@ -68,25 +68,25 @@ The `REMOTE` is a `URL` to the file to download for the module. In order for you
 1. The URL *must* use `https`.
 2. The URL *must* refer to a stable file location. If using a `Git URL`, it should refer to a specific commit, not to a branch.
 
-# 📚 ![Module Lists](https://github.com/flagarde/CMakeCM/tree/master/modules)
+# 📚 ![Module Lists](https://github.com/flagarde/CMakeCM/tree/main/modules)
 * ## Local :
   * [Color](modules/Colors.cmake) : Defines some colors and text styles.
   * [CPM](modules/CPM.cmake) : Wrapper for `CPM` the setup-free CMake dependency management.
   * [DefaultInstallPrefix](modules/DefaultInstallPrefix.cmake) : Set `CMAKE_INSTALL_PREFIX` if it has not been defined before.
-  * [Doctest](modules/Doctest.cmake) : Use `CPM` to setup `doctest`.
-  * [Fmt](modules/Fmt.cmake) : Use `CPM` to setup `fmt`.
+  * [Doctest](modules/Doctest.cmake) : Use `CPM` to set up `doctest`.
+  * [Fmt](modules/Fmt.cmake) : Use `CPM` to set up `fmt`.
   * [GetLatestCMakeVersion](modules/GetLatestCMakeVersion.cmake) : Obtain the CMake's latest version number.
-  * [IXWebSocket](modules/IXWebSocket.cmake) : Use `CPM` to setup `IXWebSocket`.
-  * [MagicEnum](modules/MagicEnum.cmake) : Use `CPM` to setup `magic_enum`.
-  * [Messages](modules/Messages.cmake) : Redefines the `message` command to use personnalized styles.
+  * [IXWebSocket](modules/IXWebSocket.cmake) : Use `CPM` to set up `IXWebSocket`.
+  * [MagicEnum](modules/MagicEnum.cmake) : Use `CPM` to set up `magic_enum`.
+  * [Missives](modules/Missives.cmake) : Defines the `missive` command to use colored and personalized styles.
   * [OpenSSL](modules/OpenSSL.cmake) : Use `openssl-cmake` https://github.com/flagarde/openssl-cmake to compile `OpenSSL` using `CPM`.
   * [Ping](modules/Ping.cmake) : A basic ping for CMake. Test if you are online.
   * [PreventInSourceBuilds](modules/PreventInSourceBuilds.cmake) : Prevents building the project from his source directory.
-  * [SourceLocation](modules/SourceLocation.cmake) : Use `CPM` to setup `source_location`.
+  * [SourceLocation](modules/SourceLocation.cmake) : Use `CPM` to set up `source_location`.
   * [Spdlog](modules/Spdlog.cmake) : Use `CPM` to setup `spdlog`.
   * [Standards](modules/Standards.cmake) : Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
   * [Testings](modules/Testings.cmake) : Some `CMake` functions to perform some tests in `CMake files`.
-  * [Toml11](modules/Toml11.cmake) : Use `CPM` to setup `toml11`.
+  * [Toml11](modules/Toml11.cmake) : Use `CPM` to set up `toml11`.
   * [Zlib-ng](Zlib-ng.cmake) : Compile `zlib-ng` https://github.com/zlib-ng/zlib-ng using `CPM`.
 
 * ## Remote :

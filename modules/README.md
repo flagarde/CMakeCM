@@ -2,7 +2,7 @@
 
 # Local
 
-## [Colors.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Colors.cmake) : ##
+## [Colors.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/Colors.cmake) : ##
 Defines some colors and text styles.
 
 ### Example :
@@ -59,7 +59,7 @@ message(STATUS "${BackBlue}Fr${BackWhite}${Black}an${BackRed}${White}ce${Reset}"
  </tr>
 </table>
 
-## [CPM.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/CPM.cmake) : ##
+## [CPM.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/CPM.cmake) : ##
 Wrapper for `CPM` the setup-free CMake dependency management. Use the `cpm` function with `VERSION` argument to download `CPM`. If `VERSION` is not set the version will be the one in `https://github.com/flagarde/CMakeCM/blob/master/modules/CPM.cmake`.
 
 The wrapper defines some new commands :
@@ -100,7 +100,7 @@ CPMAddPackage(
  </tr>
 </table>
 
-## [Doctest.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Doctest.cmake) : ##
+## [Doctest.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/Doctest.cmake) : ##
 Use CPM to setup [doctest](https://github.com/onqtam/doctest)
 
 ### Example :
@@ -114,7 +114,7 @@ target_link_libraries(Test PRIVATE doctest::doctest)
 doctest_discover_tests(Test)
 ```
 
-## [DefaultInstallPrefix.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/DefaultInstallPrefix.cmake) : ##
+## [DefaultInstallPrefix.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/DefaultInstallPrefix.cmake) : ##
 Set `CMAKE_INSTALL_PREFIX` if it has not been defined before.
 
 ### Example :
@@ -125,20 +125,20 @@ include(DefaultInstallPrefix)
 default_install_prefix("${CMAKE_CURRENT_SOURCE_DIR}/install")
 ```
 
-## [Fmt.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Fmt.cmake) : ##
-Use `CPM` to setup `fmt` https://github.com/fmtlib/fmt
+## [Fmt.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/Fmt.cmake) : ##
+Use `CPM` to set up `fmt` https://github.com/fmtlib/fmt
 
-## [GetLatestCMakeVersion.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/GetLatestCMakeVersion.cmake) : ##
+## [GetLatestCMakeVersion.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/GetLatestCMakeVersion.cmake) : ##
 Obtain the CMake's latest version number.
 
-## [IXWebSocket.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/IXWebSocket.cmake) : ##
-Use `CPM` to setup `IXWebSocket` https://github.com/machinezone/IXWebSocket
+## [IXWebSocket.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/IXWebSocket.cmake) : ##
+Use `CPM` to set up `IXWebSocket` https://github.com/machinezone/IXWebSocket
 
-## [MagicEnum.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/MagicEnum.cmake) : ##
-Use `CPM` to setup `magic_enum` https://github.com/Neargye/magic_enum
+## [MagicEnum.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/MagicEnum.cmake) : ##
+Use `CPM` to set up `magic_enum` https://github.com/Neargye/magic_enum
 
-## [Messages.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Messages.cmake) : ##
-Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN` and `ERROR` are created by defaults.
+## [Missives.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/Missives.cmake) : ##
+Defines the `Message` command to use colored and personalized styles. `NOTE` `INFO` `WARN` and `ERROR` are created by defaults.
 
 ### Example :
 
@@ -147,7 +147,7 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
   <td>
 
 ```cmake
-  include(Messages)
+  include(Missives)
 
   message_mode(NAME "VERY_IMPORTANT"
              STYLE "BoldRed"
@@ -155,22 +155,22 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
              APPEND_END "!!!!!"
              APPEND_STYLE "BoldYellow")
 
-  message(SEND_ERROR "SEND_ERROR")
-  message(WARNING "WARNING")
-  message(AUTHOR_WARNING "AUTHOR_WARNING")
-  message(DEPRECATION "DEPRECATION")
-  message(STATUS "STATUS")
-  message(NOTICE "NOTICE")
-  message(VERBOSE "VERBOSE")
-  message(DEBUG "DEBUG")
-  message(TRACE "TRACE")
-  message(ERROR "ERROR")
-  message(WARN "WARN")
-  message(INFO "INFO")
-  message(NOTE "NOTE")
-  message(TOADD "TO ADD")
-  message(TOREMOVE "TO REMOVE")
-  message(VERY_IMPORTANT "VERY_IMPORTANT")
+  missive(SEND_ERROR "SEND_ERROR")
+  missive(WARNING "WARNING")
+  missive(AUTHOR_WARNING "AUTHOR_WARNING")
+  missive(DEPRECATION "DEPRECATION")
+  missive(STATUS "STATUS")
+  missive(NOTICE "NOTICE")
+  missive(VERBOSE "VERBOSE")
+  missive(DEBUG "DEBUG")
+  missive(TRACE "TRACE")
+  missive(ERROR "ERROR")
+  missive(WARN "WARN")
+  missive(INFO "INFO")
+  missive(NOTE "NOTE")
+  missive(TO_ADD "TO ADD")
+  missive(TO_REMOVE "TO REMOVE")
+  missive(VERY_IMPORTANT "VERY_IMPORTANT")
 ```
 </td>
   <td>
@@ -181,11 +181,11 @@ Redefines the `message` command to use personnalized styles. `NOTE` `INFO` `WARN
  </tr>
 </table>
 
-## [OpenSSL.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/OpenSSL.cmake) : ##
+## [OpenSSL.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/OpenSSL.cmake) : ##
 Use `openssl-cmake` https://github.com/flagarde/openssl-cmake to compile `OpenSSL`.
 
-## [Ping.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Ping.cmake) : ##
-Test if you are online. Try to download [Ping](https://github.com/flagarde/Ping) an populate the `IS_ONLINE` and `IS_OFFLINE` variables and `IS_ONLINE_RAW` and `IS_OFFLINE_RAW`.
+## [Ping.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/Ping.cmake) : ##
+Test if you are online. Try to download [Ping](https://github.com/flagarde/Ping) and populate the `IS_ONLINE` and `IS_OFFLINE` variables and `IS_ONLINE_RAW` and `IS_OFFLINE_RAW`.
 
 ### Example :
 
@@ -197,16 +197,16 @@ if(${IS_ONLINE} STREQUAL TRUE)
 endif()
 ```
 
-## [PreventInSourceBuilds.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/PreventInSourceBuilds.cmake) : ##
+## [PreventInSourceBuilds.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/PreventInSourceBuilds.cmake) : ##
 Prevents building the project from his source directory.
 
-## [SourceLocation.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/SourceLocation.cmake) : ##
-Use `CPM` to setup `SourceLocation` https://github.com/flagarde/source_location.git
+## [SourceLocation.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/SourceLocation.cmake) : ##
+Use `CPM` to set up `SourceLocation` https://github.com/flagarde/source_location.git
 
-## [Spdlog.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Spdlog.cmake) : ##
-Use `CPM` to setup `spdlog` https://github.com/gabime/spdlog
+## [Spdlog.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/Spdlog.cmake) : ##
+Use `CPM` to set up `spdlog` https://github.com/gabime/spdlog
 
-## [Standards.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Standards.cmake) : ##
+## [Standards.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/Standards.cmake) : ##
 Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
 
 ### Example :
@@ -216,7 +216,7 @@ Set the `CMAKE_C_STANDARD` or `CMAKE_CXX_STANDARD` to the required standard.
   cxx_20()
 ```
 
-## [Testings.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Testings.cmake) : ##
+## [Testings.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/Testings.cmake) : ##
 Some `CMake` functions to perform some tests in `CMake files`.
 
 ### Example :
@@ -248,10 +248,10 @@ Some `CMake` functions to perform some tests in `CMake files`.
  </tr>
 </table>
 
-## [Toml11.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Toml11.cmake) : ##
-Use `CPM` to setup `toml11` https://github.com/ToruNiina/toml11
+## [Toml11.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/Toml11.cmake) : ##
+Use `CPM` to set up `toml11` https://github.com/ToruNiina/toml11
 
-## [Zlib-ng.cmake](https://github.com/flagarde/CMakeCM/blob/master/modules/Zlib-ng.cmake) : ##
+## [Zlib-ng.cmake](https://github.com/flagarde/CMakeCM/blob/main/modules/Zlib-ng.cmake) : ##
 Compile `zlib-ng` https://github.com/zlib-ng/zlib-ng.
 
 # Remote
