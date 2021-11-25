@@ -1,3 +1,8 @@
+include_guard(GLOBAL)
+
+cmake_policy(PUSH)
+cmake_policy(SET CMP0057 NEW) # if IN_LIST
+
 include(FindPackageHandleStandardArgs)
 include(Missives)
 
@@ -55,3 +60,5 @@ set(CMAKE_REQUIRED_QUIET ${CMAKE_REQUIRED_QUIET_SAVE})
 unset(CMAKE_REQUIRED_QUIET_SAVE)
 
 find_package_handle_standard_args(Gcov REQUIRED_VARS ${REQUIRED_VARS})
+
+cmake_policy(POP)

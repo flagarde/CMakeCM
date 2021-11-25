@@ -1,5 +1,8 @@
 include_guard(GLOBAL)
 
+cmake_policy(PUSH)
+cmake_policy(SET CMP0057 NEW) # if IN_LIST
+
 include(Missives)
 
 set(ALLOWABLE_BUILD_TYPES "Debug" "MinSizeRel" "RelWithDebInfo" "Release")
@@ -161,3 +164,5 @@ function(set_default_configuration)
     set(CMAKE_CONFIGURATION_TYPES "${ARG_CONFIGS}")
   endif()
 endfunction()
+
+cmake_policy(POP)

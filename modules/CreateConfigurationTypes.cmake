@@ -1,5 +1,8 @@
 include_guard(GLOBAL)
 
+cmake_policy(PUSH)
+cmake_policy(SET CMP0057 NEW) # if IN_LIST
+
 include(Missives)
 
 include(ConfigurationCheck)
@@ -134,3 +137,5 @@ macro(add_configuration)
     print_configuration(${ARG_CONFIG})
   endif()
 endmacro()
+
+cmake_policy(POP)

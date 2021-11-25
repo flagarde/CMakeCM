@@ -1,3 +1,5 @@
+include_guard(GLOBAL)
+
 include(Missives)
 
 # include required Modules
