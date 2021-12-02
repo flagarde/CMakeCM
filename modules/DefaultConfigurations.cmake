@@ -65,7 +65,7 @@ unset(FORTRAN_COVERAGE_FLAG)
 
 # All warnings
 
-if(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
+if(MSVC)
   add_configuration(CONFIG AllWarnings)
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
   add_configuration(CONFIG AllWarnings C_FLAGS "-Wall -Wextra -Wpedantic" CXX_FLAGS "-Wall -Wextra -Wpedantic" Fortran_FLAGS "-Wall -Wextra -Wpedantic")
