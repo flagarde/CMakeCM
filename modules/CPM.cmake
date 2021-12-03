@@ -1,7 +1,6 @@
 include_guard(GLOBAL)
 
 include(GNUInstallDirs)
-include(Missives)
 
 # https://cmake.org/cmake/help/latest/policy/CMP0097.html
 if(POLICY CMP0097)
@@ -22,6 +21,8 @@ if(NOT DEFINED CPM_URL)
   set(CPM_URL https://github.com/cpm-cmake/CPM.cmake/releases/download/v${CPM_DEFAULT_VERSION}/CPM.cmake)
 endif()
 
+set(EMPTY_FILE "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
+
 macro(cpm)
   include(FetchContent)
   include(Ping)
@@ -38,6 +39,12 @@ macro(cpm)
   if(NOT EXISTS "${CPM_DOWNLOAD_LOCATION}")
     missive(NOTE "Downloading CPM to ${CPM_DOWNLOAD_LOCATION}")
     file(DOWNLOAD "${CPM_URL}" "${CPM_DOWNLOAD_LOCATION}")
+  elseif(EXISTS "${CPM_DOWNLOAD_LOCATION}")
+    string(SHA256 SHA256OUTPUT "${CPM_DOWNLOAD_LOCATION}")
+    if(${SHA256OUTPUT} STREQUAL ${EMPTY_FILE})
+      file(REMOVE "${CPM_DOWNLOAD_LOCATION}")
+      message(FATAL_ERROR "cpm not downloaded")
+    endif()
   endif()
 
   #Make CPm looks a bit like CMMM
