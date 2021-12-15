@@ -50,7 +50,7 @@ macro(cpm)
   endif()
 
   #Make CPm looks a bit like CMMM
-  set(CPM_INDENT "${BoldGreen}[CPM]")
+  set(CPM_INDENT "[CPM]")
 
   include("${CPM_DOWNLOAD_LOCATION}")
 endmacro()
