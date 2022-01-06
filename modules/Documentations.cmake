@@ -370,15 +370,15 @@ function(doxyfile_docs)
     if(ARGS_USE_STAMP_FILE)
       #-interaction=batchmode
       add_custom_target(doc-latex ${ALL_STRING} DEPENDS "${STAMP_FILE}" SOURCES ${_sources}
-              COMMAND "${LATEX_EXECUTABLE}" -draftmode "${DOXYGEN_INPUT_LATEX}"
-              COMMAND "${LATEX_EXECUTABLE}" "${DOXYGEN_INPUT_LATEX}"
+              COMMAND "${LATEX_EXECUTABLE}" -shell-restricted -draftmode "${DOXYGEN_INPUT_LATEX}"
+              COMMAND "${LATEX_EXECUTABLE}" -shell-restricted "${DOXYGEN_INPUT_LATEX}"
               WORKING_DIRECTORY "${ORIGINAL_DOXYGEN_OUTPUT_DIR}/${DOXYGEN_LATEX_OUTPUT}"
               BYPRODUCTS "${DOXYGEN_OUTPUT_LATEX}"
               COMMENT "Generating LaTeX documentation.")
     else()
       add_custom_target(doc-latex ${ALL_STRING} DEPENDS generate-doxygen SOURCES ${_sources}
-              COMMAND "${LATEX_EXECUTABLE}" -draftmode "${DOXYGEN_INPUT_LATEX}"
-              COMMAND "${LATEX_EXECUTABLE}" "${DOXYGEN_INPUT_LATEX}"
+              COMMAND "${LATEX_EXECUTABLE}" -shell-restricted -draftmode "${DOXYGEN_INPUT_LATEX}"
+              COMMAND "${LATEX_EXECUTABLE}" -shell-restricted "${DOXYGEN_INPUT_LATEX}"
               WORKING_DIRECTORY "${ORIGINAL_DOXYGEN_OUTPUT_DIR}/${DOXYGEN_LATEX_OUTPUT}"
               BYPRODUCTS "${DOXYGEN_OUTPUT_LATEX}"
               COMMENT "Generating LaTeX documentation.")
