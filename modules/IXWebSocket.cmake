@@ -8,7 +8,7 @@ if(NOT DEFINED IXWEBSOCKET_REPOSITORY)
 endif()
 
 if(NOT DEFINED IXWEBSOCKET_TAG)
-  set(IXWEBSOCKET_TAG "v11.3.1")
+  set(IXWEBSOCKET_TAG "v11.3.2")
 endif()
 
 include(Zlib-ng)
