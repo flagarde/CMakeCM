@@ -3,7 +3,7 @@ include_guard(GLOBAL)
 include(Missives)
 
 if(NOT DEFINED ZLIB-NG_TAG)
-  set(ZLIB-NG_TAG "2.0.5")
+  set(ZLIB-NG_TAG "2.0.6")
 endif()
 
 if(NOT DEFINED ZLIB-NG_REPOSITORY)
