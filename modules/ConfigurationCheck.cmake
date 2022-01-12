@@ -51,7 +51,7 @@ endfunction()
 function(configuration_exists)
   cmake_parse_arguments(ARG "VERBOSE" "NAME;RESULT" "" ${ARGN})
   if(NOT DEFINED ARG_NAME)
-    message(FATAL_ERROR "NAME is mandatory")
+    missive(FATAL_ERROR "NAME is mandatory")
   endif()
 
   string(TOUPPER ${ARG_NAME} NAME)
