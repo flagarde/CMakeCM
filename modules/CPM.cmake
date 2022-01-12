@@ -1,5 +1,3 @@
-include_guard(GLOBAL)
-
 include(GNUInstallDirs)
 
 # https://cmake.org/cmake/help/latest/policy/CMP0097.html
