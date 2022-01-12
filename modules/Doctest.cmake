@@ -4,7 +4,7 @@ include(CPM)
 cpm()
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-  include(CTest)
+  enable_testing()
 else()
  if(NOT CMAKE_TESTING_ENABLED)
     missive(WARN "You have not included Doctest module in the source directory root \"${CMAKE_SOURCE_DIR}/CMakeLists.txt\" and you didn't call enable_testing() neither in this directory.")
