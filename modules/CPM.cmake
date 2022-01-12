@@ -21,14 +21,16 @@ if(NOT DEFINED CPM_URL)
   set(CPM_URL https://github.com/cpm-cmake/CPM.cmake/releases/download/v${CPM_DEFAULT_VERSION}/CPM.cmake)
 endif()
 
-set(EMPTY_FILE "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
-
 set(CPM_USE_NAMED_CACHE_DIRECTORIES TRUE)
 
 macro(cpm)
   include(FetchContent)
   include(Ping)
   include(Missives)
+
+  #Make CPm looks a bit like CMMM
+  set(CPM_INDENT "[CPM]")
+  mark_as_advanced(CPM_INDENT)
 
   cmake_parse_arguments(ARG "" "VERSION" "" "${ARGN}")
   if(NOT DEFINED ARG_VERSION)
@@ -47,17 +49,14 @@ macro(cpm)
   endif()
   if(NOT EXISTS "${CPM_DOWNLOAD_LOCATION}")
     missive(NOTE "Downloading CPM to ${CPM_DOWNLOAD_LOCATION}")
-    file(DOWNLOAD "${CPM_URL}" "${CPM_DOWNLOAD_LOCATION}")
-  elseif(EXISTS "${CPM_DOWNLOAD_LOCATION}")
-    string(SHA256 SHA256OUTPUT "${CPM_DOWNLOAD_LOCATION}")
-    if(${SHA256OUTPUT} STREQUAL ${EMPTY_FILE})
+    file(DOWNLOAD "${CPM_URL}" "${CPM_DOWNLOAD_LOCATION}" INACTIVITY_TIMEOUT 30 LOG LOG_ STATUS CPM_DOWNLOAD_STATUS TIMEOUT 30)
+    list(GET CPM_DOWNLOAD_STATUS 0 CPM_DOWNLOAD_CODE)
+    list(GET CPM_DOWNLOAD_STATUS 1 CPM_DOWNLOAD_MESSAGE)
+    if(${CPM_DOWNLOAD_CODE})
       file(REMOVE "${CPM_DOWNLOAD_LOCATION}")
-      message(FATAL_ERROR "cpm not downloaded")
+      message(FATAL_ERROR "Error downloading CPM.cmake@${CPM_VER} (v${CPM_VER}) : ${CPM_DOWNLOAD_MESSAGE}")
     endif()
   endif()
-
-  #Make CPm looks a bit like CMMM
-  set(CPM_INDENT "[CPM]")
 
   include("${CPM_DOWNLOAD_LOCATION}")
 endmacro()
