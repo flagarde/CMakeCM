@@ -31,3 +31,5 @@ cmcm_module(Documentations.cmake LOCAL modules/Documentations.cmake VERSION 1)
 cmcm_module(Doxyfile.cmake LOCAL modules/Doxyfile.cmake VERSION 1)
 cmcm_module(Dotenv.cmake LOCAL modules/Dotenv.cmake VERSION 1)
 cmcm_module(Nlohmann.cmake LOCAL modules/Nlohmann.cmake VERSION 1)
+cmcm_module(ThirdPartyLicenses.cmake LOCAL modules/ThirdPartyLicenses.cmake VERSION 1)
+
