@@ -33,3 +33,7 @@ CPMAddPackage(NAME spdlog
               GIT_TAG ${SPDLOG_TAG}
               FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
               OPTIONS "${spdlog_OPTIONS}")
+
+if(spdlog_ADDED)
+  export(TARGETS spdlog NAMESPACE spdlog:: FILE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/spdlog.cmake)
+endif()
