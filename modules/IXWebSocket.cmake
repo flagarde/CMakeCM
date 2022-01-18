@@ -30,5 +30,5 @@ CPMAddPackage(NAME IXWebSocket
 
 if(IXWebSocket_ADDED)
   add_library(ixwebsocket::ixwebsocket ALIAS ixwebsocket)
-  export(TARGETS ixwebsocket NAMESPACE ixwebsocket:: FILE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/ixwebsocket.cmake)
+  export(TARGETS ixwebsocket NAMESPACE ixwebsocket:: FILE ${CMAKE_BINARY_DIR}/cmake/ixwebsocket.cmake)
 endif()
