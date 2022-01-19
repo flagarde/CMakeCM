@@ -12,6 +12,7 @@ if(NOT DEFINED SOURCELOCATION_TAG)
 endif()
 
 declare_option(REPOSITORY SourceLocation OPTION BUILD_TESTS VALUE "OFF")
+declare_option(REPOSITORY SourceLocation OPTION BUILD_DOCS VALUE "OFF")
 declare_option(REPOSITORY SourceLocation OPTION BUILD_EXAMPLES VALUE "OFF")
 print_options(REPOSITORY  SourceLocation)
 
