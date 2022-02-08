@@ -31,6 +31,7 @@ CPMAddPackage(NAME IXWebSocket
 if(IXWebSocket_ADDED)
     if(MSVC)
     elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
+      target_compile_options(ixwebsocket PRIVATE "-Wno-unused-parameter")
     elseif(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
       target_compile_options(ixwebsocket PRIVATE "-Wno-unused-macros;-Wno-weak-vtables;-Wno-exit-time-destructors;-Wno-unreachable-code-return;-Wno-missing-prototypes;-Wno-cast-qual;-Wno-covered-switch-default;-Wno-shadow;-Wno-zero-as-null-pointer-constant;-Wno-unused-parameter;-Wno-global-constructors;-Wno-sign-conversion;-Wno-cast-align;-Wno-missing-variable-declarations;-Wno-conversion;-Wno-reserved-id-macro;-Wno-padded;-Wno-old-style-cast")
     endif()
