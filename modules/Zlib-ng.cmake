@@ -80,14 +80,6 @@ if(COMPILE_ZLIB)
 
     add_library(ZLIB IMPORTED INTERFACE GLOBAL)
     target_include_directories(ZLIB INTERFACE $<BUILD_INTERFACE:${ZLIB_INCLUDE_DIR}> INTERFACE $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}>)
-    if(MSVC)
-      #target_compile_options(ZLIB INTERFACE)
-    elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
-      #target_compile_options(ZLIB INTERFACE)
-    elseif(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
-      target_compile_options(zlib BEFORE PRIVATE "-Wno-missing-prototypes -Wno-cast-align -Wno-comma -Wno-cast-qual -Wno-padded -Wno-sign-conversion")
-      target_compile_options(zlibstatic BEFORE PRIVATE "-Wno-missing-prototypes -Wno-cast-align -Wno-comma -Wno-cast-qual -Wno-padded -Wno-sign-conversion")
-    endif()
 
     target_link_libraries(ZLIB INTERFACE zlibstatic)
 
