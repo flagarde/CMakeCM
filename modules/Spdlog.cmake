@@ -37,7 +37,7 @@ CPMAddPackage(NAME spdlog
 if(spdlog_ADDED)
    if(MSVC)
    elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
-   elseif(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
+   elseif(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang" OR ${CMAKE_CXX_COMPILER_ID} MATCHES "AppleClang")
      target_compile_options(spdlog PRIVATE "-Wno-exit-time-destructors;-Wno-signed-enum-bitfield;-Wno-covered-switch-default;-Wno-weak-template-vtables;-Wno-weak-vtables;-Wno-padded;-Wno-signed-enum-bitfield;-Wno-missing-noreturn;-Wno-documentation-unknown-command;-Wno-missing-variable-declarations")
    endif()
   export(TARGETS spdlog NAMESPACE spdlog:: FILE ${CMAKE_BINARY_DIR}/cmake/spdlog.cmake)
