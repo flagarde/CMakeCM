@@ -29,6 +29,11 @@ CPMAddPackage(NAME IXWebSocket
               OPTIONS "${IXWebSocket_OPTIONS}")
 
 if(IXWebSocket_ADDED)
+    if(MSVC)
+    elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
+    elseif(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
+      target_compile_options(ixwebsocket PRIVATE "-Wno-old-style-cast")
+    endif()
   add_library(ixwebsocket::ixwebsocket ALIAS ixwebsocket)
   export(TARGETS ixwebsocket NAMESPACE ixwebsocket:: FILE ${CMAKE_BINARY_DIR}/cmake/ixwebsocket.cmake)
 endif()
