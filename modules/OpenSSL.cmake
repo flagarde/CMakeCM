@@ -67,21 +67,11 @@ if(COMPILE_OPENSSL)
     set(OPENSSL_INCLUDE_DIR "${CMAKE_INSTALL_PREFIX}/include" CACHE INTERNAL "" FORCE)
     set(OPENSSL_INCLUDE_DIRS "${CMAKE_INSTALL_PREFIX}/include" CACHE INTERNAL "" FORCE)
 
-    if(MSVC)
-      #target_compile_options(ZLIB INTERFACE)
-    elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
-      #target_compile_options(ZLIB INTERFACE)
-    elseif(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
-      target_compile_options(crypto PRIVATE "-Wno-unused-parameter -Wno-old-style-cast -Wno-sign-conversion -Wno-covered-switch-default -Wno-padded")
-      target_compile_options(ssl PRIVATE "-Wno-unused-parameter -Wno-old-style-cast -Wno-sign-conversion -Wno-covered-switch-default -Wno-padded")
-    endif()
-
     add_library(SSL IMPORTED INTERFACE)
     target_link_libraries(SSL INTERFACE OpenSSL::SSL)
 
     add_library(CRYPTO IMPORTED INTERFACE)
     target_link_libraries(CRYPTO INTERFACE OpenSSL::Crypto)
-
 
     set(OPENSSL_CRYPTO_LIBRARY CRYPTO CACHE INTERNAL "" FORCE)
     set(OPENSSL_SSL_LIBRARY SSL CACHE INTERNAL "" FORCE)
