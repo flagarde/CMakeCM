@@ -27,3 +27,11 @@ CPMAddPackage(NAME fmt
                FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
                OPTIONS "${fmt_OPTIONS}"
               )
+
+if(fmt_ADDED)
+   if(MSVC)
+   elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
+   elseif(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
+     target_compile_options(fmt PRIVATE "-Wno-padded;-Wno-signed-enum-bitfield;-Wno-missing-noreturn")
+   endif()
+endif()
