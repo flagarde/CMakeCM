@@ -35,5 +35,10 @@ CPMAddPackage(NAME spdlog
               OPTIONS "${spdlog_OPTIONS}")
 
 if(spdlog_ADDED)
+   if(MSVC)
+   elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
+   elseif(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
+     target_compile_options(spdlog PRIVATE "-Wno-padded;-Wno-signed-enum-bitfield;-Wno-missing-noreturn;-Wno-documentation-unknown-command;-Wno-missing-variable-declarations")
+   endif()
   export(TARGETS spdlog NAMESPACE spdlog:: FILE ${CMAKE_BINARY_DIR}/cmake/spdlog.cmake)
 endif()
