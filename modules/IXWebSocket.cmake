@@ -30,6 +30,7 @@ CPMAddPackage(NAME IXWebSocket
 
 if(IXWebSocket_ADDED)
     if(MSVC)
+      target_compile_options(ixwebsocket PRIVATE "/wd4244;/wd4245;/wd4456;/wd4706")
     elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
       target_compile_options(ixwebsocket PRIVATE "-Wno-unused-parameter")
     elseif(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang" OR ${CMAKE_CXX_COMPILER_ID} MATCHES "AppleClang")
