@@ -68,6 +68,7 @@ if(COMPILE_OPENSSL)
     set(OPENSSL_INCLUDE_DIRS "${CMAKE_INSTALL_PREFIX}/include" CACHE INTERNAL "" FORCE)
 
     if(MSVC)
+      target_compile_options(ssl PRIVATE "/wd4100;/wd4267")
     elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
       target_compile_options(ssl PRIVATE "-Wno-unused-parameter")
     elseif(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang" OR ${CMAKE_CXX_COMPILER_ID} MATCHES "AppleClang")
