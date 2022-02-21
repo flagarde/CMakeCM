@@ -4,11 +4,11 @@ include(CPM)
 cpm()
 
 if(NOT DEFINED IXWEBSOCKET_REPOSITORY)
-  set(IXWEBSOCKET_REPOSITORY "https://github.com/flagarde/IXWebSocket")
+  set(IXWEBSOCKET_REPOSITORY "https://github.com/machinezone/IXWebSocket")
 endif()
 
 if(NOT DEFINED IXWEBSOCKET_TAG)
-  set(IXWEBSOCKET_TAG "master")
+  set(IXWEBSOCKET_TAG "v11.3.3")
 endif()
 
 include(Zlib-ng)
