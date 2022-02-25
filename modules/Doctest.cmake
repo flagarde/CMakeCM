@@ -27,7 +27,7 @@ declare_option(REPOSITORY doctest OPTION DOCTEST_NO_INSTALL VALUE FALSE)
 declare_option(REPOSITORY doctest OPTION DOCTEST_USE_STD_HEADERS VALUE TRUE)
 #https://github.com/doctest/doctest/issues/501
 if (WIN32 AND (CMAKE_CXX_COMPILER_ID STREQUAL GNU))
-  declare_option(REPOSITORY doctest OPTION DOCTEST_THREAD_LOCAL VALUE "")
+  declare_option(REPOSITORY doctest OPTION DOCTEST_THREAD_LOCAL VALUE " ")
 endif()
 print_options(REPOSITORY  doctest)
 
