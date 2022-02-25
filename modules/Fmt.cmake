@@ -19,6 +19,7 @@ declare_option(REPOSITORY fmt OPTION FMT_TEST VALUE OFF)
 declare_option(REPOSITORY fmt OPTION FMT_FUZZ VALUE OFF)
 declare_option(REPOSITORY fmt OPTION FMT_CUDA_TEST VALUE OFF)
 declare_option(REPOSITORY fmt OPTION FMT_OS VALUE ON)
+declare_option(REPOSITORY fmt OPTION FMT_SYSTEM_HEADERS VALUE ON)
 print_options(REPOSITORY  fmt)
 
 CPMAddPackage(NAME fmt
@@ -27,11 +28,3 @@ CPMAddPackage(NAME fmt
                FETCHCONTENT_UPDATES_DISCONNECTED ${IS_OFFLINE}
                OPTIONS "${fmt_OPTIONS}"
               )
-
-if(fmt_ADDED)
-   if(MSVC)
-   elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
-   elseif(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
-     target_compile_options(fmt PRIVATE "-Wno-disabled-macro-expansion;-Wno-padded;-Wno-signed-enum-bitfield;-Wno-missing-noreturn;-Wno-documentation-unknown-command;-Wno-missing-variable-declarations")
-   endif()
-endif()
