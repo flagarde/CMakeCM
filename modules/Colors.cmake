@@ -1,5 +1,3 @@
-include_guard(GLOBAL)
-
 if(NOT WIN32 AND NOT DEFINED ENV{CLION_IDE} AND NOT DEFINED ENV{DevEnvDir})
   string(ASCII 27 Esc)
   set(Return "${Esc}[3D")
