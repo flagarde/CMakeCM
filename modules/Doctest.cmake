@@ -14,7 +14,7 @@ else()
 endif()
 
 if(NOT DEFINED DOCTEST_TAG)
-  set(DOCTEST_TAG "v2.4.8")
+  set(DOCTEST_TAG "v2.4.9")
 endif()
 
 if(NOT DEFINED DOCTEST_REPOSITORY)
