@@ -8,7 +8,7 @@ if(NOT DEFINED NLOHMANN_REPOSITORY)
 endif()
 
 if(NOT DEFINED NLOHMANN_TAG)
-    set(NLOHMANN_TAG "v3.10.5")
+    set(NLOHMANN_TAG "v3.11.2")
 endif()
 
 declare_option(REPOSITORY nlohmann OPTION JSON_BuildTests VALUE OFF)
