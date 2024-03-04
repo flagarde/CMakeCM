@@ -7,7 +7,7 @@ endif()
 
 # If you don't provide version.
 if(NOT DEFINED CPM_DEFAULT_VERSION)
-  set(CPM_DEFAULT_VERSION "0.36.0")
+  set(CPM_DEFAULT_VERSION "0.38.7")
 endif()
 
 # Bypass the version given by the user.
