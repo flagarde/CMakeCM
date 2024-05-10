@@ -31,7 +31,7 @@ if (WIN32 AND (CMAKE_CXX_COMPILER_ID STREQUAL GNU))
 endif()
 print_options(REPOSITORY  doctest)
 
-CPMAddPackage(NAME doctest GIT_REPOSITORY "${DOCTEST_REPOSITORY}" GIT_TAG "${DOCTEST_TAG}" OPTIONS "${doctest_OPTIONS}")
+CPMAddPackage(NAME doctest GIT_REPOSITORY "${DOCTEST_REPOSITORY}" GIT_TAG "${DOCTEST_TAG}" OPTIONS "${doctest_OPTIONS};SYSTEM TRUE" )
 
 if(doctest_ADDED)
   include("${doctest_SOURCE_DIR}/scripts/cmake/doctest.cmake")
