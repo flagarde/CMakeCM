@@ -12,8 +12,10 @@ if(NOT DEFINED IXWEBSOCKET_TAG)
 endif()
 
 include(Zlib-ng)
-include(OpenSSL)
-
+if(NOT WIN32)
+  include(OpenSSL)
+  declare_option(REPOSITORY IXWebSocket OPTION USE_TLS VALUE OFF)
+endif()
 declare_option(REPOSITORY IXWebSocket OPTION USE_TLS VALUE ON)
 declare_option(REPOSITORY IXWebSocket OPTION USE_OPEN_SSL VALUE ON)
 declare_option(REPOSITORY IXWebSocket OPTION USE_ZLIB VALUE ON)
